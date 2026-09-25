@@ -3,204 +3,164 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ashmi Anees — MCA graduate, data analyst and full stack developer. SQL, Power BI, Tableau, React, Django. Open to GCC, remote, and on-site roles.">
-  <meta name="theme-color" content="#f4f0e7">
-  <title>Ashmi Anees — Data Analyst & Developer</title>
+  <meta name="description" content="Ashmi Anees — full stack developer and data analyst. Build the app or explain the business. Immediate joiner for remote, hybrid, and on-site work.">
+  <meta name="theme-color" content="#f6f1e8">
+  <title>Ashmi Anees — Developer & Data Analyst</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,560;0,9..144,640;1,9..144,520&family=Outfit:wght@360;460;560&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,560;0,9..144,650;1,9..144,520&family=Outfit:wght@370;480;580&display=swap" rel="stylesheet">
   <style>
     :root {
-      --paper: #f4f0e7;
-      --ink: #1c211c;
-      --muted: #5e655c;
-      --line: #d9d0c0;
-      --teal: #1e4a38;
-      --soft: #e7f0ea;
-      --gold: #8a6a32;
-      --max: 1120px;
+      --paper: #f6f1e8;
+      --card: #fffaf3;
+      --ink: #1b2420;
+      --muted: #5d675f;
+      --line: #e3d8c8;
+      --green: #143d32;
+      --green-2: #1f6a52;
+      --mint: #e5f3ec;
+      --clay: #c46b45;
+      --max: 1080px;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: "Outfit", system-ui, sans-serif;
-      line-height: 1.6;
-    }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: Outfit, system-ui, sans-serif; line-height: 1.6; }
     body.locked { overflow: hidden; }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
-    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
-    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 560; letter-spacing: -0.03em; margin: 0; }
+    button { font: inherit; background: none; border: 0; cursor: pointer; color: inherit; }
+    h1, h2, h3 { font-family: Fraunces, Georgia, serif; font-weight: 560; letter-spacing: -0.03em; margin: 0; }
     p { margin: 0; }
-    .skip { position: absolute; left: 12px; top: -40px; background: var(--teal); color: #fff; padding: 8px 12px; z-index: 80; }
+    .skip { position: absolute; left: 12px; top: -40px; background: var(--green); color: #fff; padding: 8px 12px; z-index: 80; }
     .skip:focus { top: 12px; }
 
     .intro {
-      position: fixed;
-      inset: 0;
-      z-index: 40;
-      background:
-        radial-gradient(ellipse at 50% 80%, rgba(30, 74, 56, 0.08), transparent 46%),
-        var(--paper);
-      display: grid;
-      place-items: center;
-      perspective: 1400px;
-      transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+      position: fixed; inset: 0; z-index: 40; perspective: 1400px;
+      display: grid; place-items: center;
+      background: radial-gradient(ellipse at 50% 85%, rgba(20,61,50,.1), transparent 48%), var(--paper);
+      transition: transform .9s cubic-bezier(.76,0,.24,1);
     }
     .intro.leave { transform: translateY(-102%); pointer-events: none; }
     .intro-stage { text-align: center; transform-style: preserve-3d; }
-    .intro-role {
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-size: 0.78rem;
-      font-weight: 560;
-      color: var(--teal);
-      opacity: 0;
-      animation: rise 0.7s 0.15s ease forwards;
-    }
-    .intro-name { line-height: 0.9; margin: 8px 0 0; perspective: 800px; }
+    .intro-role { letter-spacing: .16em; text-transform: uppercase; font-size: .78rem; font-weight: 580; color: var(--green-2); opacity: 0; animation: rise .7s .15s ease forwards; }
+    .intro-name { line-height: .9; margin: 8px 0 0; }
     .intro-name span {
-      display: inline-block;
-      font-size: clamp(64px, 12vw, 128px);
-      opacity: 0;
-      transform: translateZ(-240px) rotateX(28deg) scale(0.72);
-      animation: namepop 1s cubic-bezier(0.16, 1.35, 0.4, 1) forwards;
+      display: inline-block; font-size: clamp(64px, 12vw, 124px); opacity: 0;
+      transform: translateZ(-240px) rotateX(28deg) scale(.72);
+      animation: namepop 1s cubic-bezier(.16,1.35,.4,1) forwards;
     }
-    .intro-name span + span { margin-left: 0.18em; font-style: italic; color: var(--teal); animation-delay: 0.12s; }
+    .intro-name span + span { margin-left: .16em; font-style: italic; color: var(--green-2); animation-delay: .12s; }
     .intro-photo {
-      width: min(320px, 62vw);
-      margin: -8px auto 0;
-      opacity: 0;
-      transform: translateZ(-180px) scale(0.22) rotateY(-24deg);
-      filter: drop-shadow(0 28px 18px rgba(28, 33, 28, 0.18));
-      animation: photopop 1.15s 0.45s cubic-bezier(0.16, 1.25, 0.32, 1) forwards;
+      width: min(300px, 60vw); margin: -6px auto 0; opacity: 0;
+      transform: translateZ(-180px) scale(.22) rotateY(-24deg);
+      filter: drop-shadow(0 28px 18px rgba(20,36,28,.18));
+      animation: photopop 1.15s .45s cubic-bezier(.16,1.25,.32,1) forwards;
     }
-    @keyframes rise { to { opacity: 1; transform: none; } }
+    @keyframes rise { to { opacity: 1; } }
     @keyframes namepop {
       60% { opacity: 1; transform: translateZ(70px) rotateX(-4deg) scale(1.04); }
-      100% { opacity: 1; transform: translateZ(24px) rotateX(0) scale(1); }
+      100% { opacity: 1; transform: translateZ(24px) scale(1); }
     }
     @keyframes photopop {
-      0% { opacity: 0; transform: translateZ(-180px) scale(0.22) rotateY(-24deg); }
+      0% { opacity: 0; transform: translateZ(-180px) scale(.22) rotateY(-24deg); }
       68% { opacity: 1; transform: translateZ(110px) scale(1.08) rotateY(8deg); }
-      100% { opacity: 1; transform: translateZ(36px) scale(1) rotateY(0); }
+      100% { opacity: 1; transform: translateZ(36px) scale(1); }
     }
 
-    header {
-      position: sticky; top: 0; z-index: 10;
-      background: rgba(244, 240, 231, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid transparent;
-    }
+    header { position: sticky; top: 0; z-index: 10; background: rgba(246,241,232,.92); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; }
     header.scrolled { border-bottom-color: var(--line); }
-    nav {
-      max-width: var(--max); margin: 0 auto; padding: 16px 22px;
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    }
-    .brand { font-family: "Fraunces", serif; font-size: 1.15rem; }
-    .brand span { color: var(--teal); font-style: italic; }
-    .nav-links { display: flex; gap: 22px; align-items: center; }
-    .nav-links a { color: var(--muted); }
+    nav { max-width: var(--max); margin: 0 auto; padding: 14px 22px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-family: Fraunces, serif; font-size: 1.15rem; }
+    .brand em { font-style: italic; color: var(--green-2); }
+    .nav-links { display: flex; gap: 20px; align-items: center; }
+    .nav-links a { color: var(--muted); font-size: .95rem; }
     .nav-links a:hover { color: var(--ink); }
-    .hire { color: #f7f4ec !important; background: var(--teal); border-radius: 999px; padding: 8px 14px; }
-    .menu { display: none; width: 44px; height: 42px; border: 1px solid var(--line); border-radius: 10px; }
-    main { max-width: var(--max); margin: 0 auto; padding: 0 22px 48px; }
-    .hero {
-      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 36px;
-      align-items: end; padding: 42px 0 12px;
+    .hire { background: var(--green) !important; color: #f6f1e8 !important; border-radius: 999px; padding: 8px 14px; }
+    .menu { display: none; border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; }
+    main { max-width: var(--max); margin: 0 auto; padding: 0 22px 64px; }
+
+    .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: end; padding: 36px 0 8px; }
+    .eyebrow { color: var(--clay); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 580; }
+    h1 { font-size: clamp(40px, 5.2vw, 64px); line-height: .96; margin: 10px 0 14px; }
+    h1 em { font-style: italic; color: var(--green-2); }
+    .lede { color: var(--muted); font-size: 1.08rem; max-width: 46ch; }
+    .paths-line { margin-top: 16px; padding: 14px 16px; background: var(--mint); border-radius: 14px; color: var(--green); font-weight: 580; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .btn { display: inline-flex; align-items: center; min-height: 46px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--ink); font-weight: 580; }
+    .btn.solid { background: var(--green); color: #f6f1e8; border-color: var(--green); }
+    .btn:hover { background: var(--clay); border-color: var(--clay); color: #fff; }
+    .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
+    .hero-photo { position: relative; }
+    .hero-photo img { width: min(100%, 380px); margin-left: auto; filter: drop-shadow(0 22px 14px rgba(20,36,28,.16)); animation: floaty 5.5s ease-in-out infinite; }
+    .hero-photo figcaption { position: absolute; left: 0; bottom: 16px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px; }
+    .hero-photo strong { display: block; font-family: Fraunces, serif; }
+    .hero-photo span { color: var(--muted); font-size: .86rem; }
+    @keyframes floaty { 50% { transform: translateY(-8px); } }
+
+    .story { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin: 28px 0 8px; }
+    .story a { display: block; padding: 10px 8px; border-top: 2px solid var(--green); color: var(--muted); font-size: .78rem; }
+    .story a:hover { color: var(--ink); }
+    .story b { display: block; color: var(--green); font-family: Fraunces, serif; font-size: 1rem; }
+
+    section { padding: 56px 0 4px; }
+    .sec-kicker { color: var(--clay); letter-spacing: .14em; text-transform: uppercase; font-size: .75rem; font-weight: 580; }
+    h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1; margin: 6px 0 8px; }
+    .sub { color: var(--muted); max-width: 52ch; }
+
+    .lanes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
+    .lane { border-radius: 22px; padding: 22px; min-height: 220px; }
+    .lane.build { background: var(--green); color: #f6f1e8; }
+    .lane.explain { background: var(--card); border: 1px solid var(--line); }
+    .lane h3 { font-size: 2rem; margin: 10px 0; }
+    .lane p { color: inherit; opacity: .88; }
+    .lane.build p { color: #d7ebe2; }
+    .stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .stack span { border-radius: 999px; padding: 5px 10px; font-size: .84rem; }
+    .lane.build .stack span { background: rgba(255,255,255,.12); }
+    .lane.explain .stack span { background: var(--mint); color: var(--green); }
+
+    .work { display: grid; gap: 12px; margin-top: 18px; }
+    .piece { display: grid; grid-template-columns: 220px 1fr auto; gap: 16px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 12px; }
+    .piece:hover { border-color: var(--green-2); }
+    .piece img, .ph { width: 100%; height: 132px; object-fit: cover; border-radius: 12px; background: #efe4d4; }
+    .ph { display: grid; place-items: center; text-align: center; color: var(--green); font-family: Fraunces, serif; padding: 10px; }
+    .piece h3 { font-size: 1.35rem; margin-bottom: 4px; }
+    .piece p { color: var(--muted); }
+    .go { color: var(--green-2); font-weight: 580; white-space: nowrap; }
+
+    .jobs { margin-top: 18px; display: grid; gap: 0; }
+    .job { display: grid; grid-template-columns: 190px 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--line); }
+    .when { color: var(--green-2); font-weight: 580; }
+    .job h3 { font-size: 1.35rem; }
+    .job .org { color: var(--muted); }
+    .job ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
+
+    .proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 18px; }
+    .panel { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; }
+    .panel h3 { font-size: 1.4rem; margin: 8px 0; }
+    .panel p { color: var(--muted); }
+
+    .contact {
+      margin-top: 18px; background: var(--green); color: #f6f1e8; border-radius: 28px; padding: 28px;
+      display: grid; grid-template-columns: 1.3fr .7fr; gap: 18px;
     }
-    .kicker { color: var(--teal); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 560; }
-    h1 { font-size: clamp(40px, 5.4vw, 68px); line-height: 0.96; margin: 10px 0 14px; }
-    h1 em { font-style: italic; color: var(--teal); }
-    .lede { color: var(--muted); font-size: 1.06rem; max-width: 54ch; }
-    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
-    .btn {
-      display: inline-flex; align-items: center; min-height: 46px; padding: 0 16px;
-      border-radius: 999px; border: 1px solid var(--ink); font-weight: 560;
-    }
-    .btn.solid { background: var(--ink); color: var(--paper); }
-    .btn:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
-    .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
-    .hero-photo { position: relative; perspective: 900px; min-height: 420px; }
-    .hero-photo img {
-      width: min(100%, 420px);
-      margin-left: auto;
-      filter: drop-shadow(0 24px 16px rgba(28, 33, 28, 0.16));
-      transform: rotateY(-8deg);
-      animation: floaty 5.5s ease-in-out infinite;
-    }
-    .hero-photo figcaption {
-      position: absolute; left: 8px; bottom: 18px;
-      background: rgba(251, 248, 242, 0.94); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px;
-    }
-    .hero-photo strong { display: block; font-family: "Fraunces", serif; }
-    .hero-photo span { color: var(--muted); font-size: 0.86rem; }
-    @keyframes floaty { 50% { transform: rotateY(-8deg) translateY(-8px); } }
-    .metrics {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 8px;
-    }
-    .metric { padding: 18px 14px 18px 0; }
-    .metric + .metric { border-left: 1px solid var(--line); padding-left: 16px; }
-    .metric strong { display: block; font-family: "Fraunces", serif; font-size: 1.65rem; }
-    .metric span { color: var(--muted); font-size: 0.88rem; }
-    section { padding: 68px 0 8px; }
-    .head { display: flex; justify-content: space-between; gap: 18px; align-items: end; margin-bottom: 18px; }
-    h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1; }
-    .note, .lane p, .panel p, .piece p, .job li { color: var(--muted); }
-    .lanes, .proof, .contact { display: grid; gap: 14px; }
-    .lanes, .contact { grid-template-columns: 1.2fr 0.8fr; }
-    .lanes { grid-template-columns: 1fr 1fr; }
-    .proof { grid-template-columns: repeat(3, 1fr); }
-    .lane, .panel, .job, .piece {
-      background: #fbf8f2; border: 1px solid var(--line); border-radius: 18px;
-    }
-    .lane, .panel, .job { padding: 20px; }
-    .lane h3, .panel h3 { font-size: 1.45rem; margin: 8px 0; }
-    .filters { display: flex; gap: 14px; }
-    .filters button { color: var(--muted); border-bottom: 2px solid transparent; padding: 4px 0; }
-    .filters button.on { color: var(--ink); border-bottom-color: var(--teal); }
-    .work { display: grid; gap: 12px; }
-    .piece { display: grid; grid-template-columns: 260px 1fr; gap: 18px; align-items: center; padding: 12px; }
-    .piece:hover { border-color: var(--teal); }
-    .piece img, .ph { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; background: #ebe4d6; }
-    .ph { display: grid; place-items: center; text-align: center; color: var(--teal); font-family: "Fraunces", serif; font-size: 1.35rem; padding: 12px; }
-    .meta { color: var(--gold); font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 560; }
-    .piece h3 { font-size: 1.35rem; margin: 4px 0 6px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
-    .tag { font-size: 0.8rem; background: var(--soft); color: var(--teal); border-radius: 999px; padding: 4px 8px; }
-    .go { color: var(--teal); font-weight: 560; }
-    .piece.hide { display: none; }
-    .jobs { display: grid; gap: 12px; }
-    .job { display: grid; grid-template-columns: 200px 1fr; gap: 10px; }
-    .when { color: var(--teal); font-weight: 560; }
-    .job ul { margin: 8px 0 0; padding-left: 18px; }
-    .skills { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
-    .chip { border: 1px solid var(--line); border-radius: 999px; padding: 7px 11px; background: #fff; }
-    .mail { font-family: "Fraunces", serif; font-size: clamp(28px, 4vw, 42px); line-height: 1.05; display: inline-block; margin-top: 8px; }
-    .mail:hover { color: var(--teal); }
-    .list { display: grid; gap: 6px; margin-top: 14px; }
-    .list a { color: var(--teal); }
-    footer {
-      max-width: var(--max); margin: 24px auto 0; padding: 16px 22px 28px;
-      border-top: 1px solid var(--line); display: flex; justify-content: space-between; color: var(--muted);
-    }
+    .contact .sec-kicker, .contact h2 { color: #f6f1e8; }
+    .mail { display: inline-block; margin-top: 10px; font-family: Fraunces, serif; font-size: clamp(26px, 3.4vw, 40px); line-height: 1.1; }
+    .contact a { color: #f3d7c8; }
+    .contact .list { display: grid; gap: 8px; margin-top: 14px; font-size: 1.05rem; }
+    .contact .panel { background: rgba(255,255,255,.08); border-color: transparent; color: #f6f1e8; }
+    .contact .panel p { color: #d7ebe2; }
+    footer { max-width: var(--max); margin: 0 auto; padding: 18px 22px 28px; display: flex; justify-content: space-between; color: var(--muted); }
+
     @media (max-width: 860px) {
-      .hero, .lanes, .piece, .job, .proof, .contact, .metrics { grid-template-columns: 1fr; }
-      .metric + .metric { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); }
-      .hero-photo { min-height: 0; }
+      .hero, .lanes, .piece, .job, .proof, .contact, .story { grid-template-columns: 1fr; }
+      .piece { grid-template-columns: 1fr; }
+      .go { white-space: normal; }
       .hero-photo img { margin: 0 auto; }
-      .menu { display: grid; place-items: center; }
-      .nav-links {
-        display: none; position: absolute; left: 16px; right: 16px; top: 68px;
-        flex-direction: column; align-items: flex-start; background: #fbf8f2;
-        border: 1px solid var(--line); border-radius: 14px; padding: 14px;
-      }
+      .menu { display: inline-flex; }
+      .nav-links { display: none; position: absolute; left: 16px; right: 16px; top: 62px; flex-direction: column; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
       .nav-links.open { display: flex; }
-      .head, footer { flex-direction: column; align-items: flex-start; gap: 8px; }
+      footer { flex-direction: column; gap: 8px; }
     }
     @media (prefers-reduced-motion: reduce) {
       .intro { display: none; }
@@ -209,10 +169,10 @@
   </style>
 </head>
 <body class="locked">
-  <a class="skip" href="#work">Skip to work</a>
+  <a class="skip" href="#paths">Skip to content</a>
   <div class="intro" id="intro">
     <div class="intro-stage">
-      <p class="intro-role">Data analyst · Full stack developer</p>
+      <p class="intro-role">Full stack developer · Data analyst</p>
       <h1 class="intro-name"><span>Ashmi</span><span>Anees</span></h1>
       <img class="intro-photo" src="images/ashmi-cutout.png" alt="">
     </div>
@@ -220,311 +180,217 @@
 
   <header id="bar">
     <nav>
-      <a class="brand" href="#top">Ashmi <span>Anees</span></a>
+      <a class="brand" href="#top">Ashmi <em>Anees</em></a>
       <div class="nav-links" id="links">
+        <a href="#paths">Hire paths</a>
         <a href="#work">Work</a>
         <a href="#experience">Experience</a>
-        <a href="#about">About</a>
-        <a class="hire" href="#contact">Hire me</a>
+        <a class="hire" href="#contact">Contact</a>
       </div>
-      <button class="menu" id="menu" aria-label="Open menu" aria-expanded="false">Menu</button>
+      <button class="menu" id="menu" aria-expanded="false">Menu</button>
     </nav>
   </header>
 
   <main id="top">
     <section class="hero">
       <div>
-        <p class="kicker">MCA · Data analyst · Full stack developer</p>
-        <h1>I turn business data into decisions, <em>and ship the product around them.</em></h1>
-        <p class="lede">Two hire paths: build the app (React, Django, Flask) or explain the business (SQL, Power BI, Tableau). MCA graduate. Open to GCC, remote, hybrid, and on-site roles. Immediate joiner.</p>
+        <p class="eyebrow">Immediate joiner · remote, hybrid, or on-site</p>
+        <h1>Full stack developer <em>and</em> data analyst.</h1>
+        <p class="lede">I build the product and explain the business behind it. Open to the GCC as well as remote, hybrid, and on-site work.</p>
+        <p class="paths-line">Two hire paths: build the app (React, Django, Flask) or explain the business (SQL, Power BI, Tableau).</p>
         <div class="actions">
-          <a class="btn solid" href="#contact">Start a conversation</a>
-          <a class="btn" href="#work">View selected work</a>
+          <a class="btn solid" href="#contact">Hire Ashmi</a>
+          <a class="btn" href="#work">See the proof</a>
         </div>
       </div>
-      <figure class="hero-photo" id="heroPhoto">
+      <figure class="hero-photo">
         <img src="images/ashmi-cutout.png" alt="Ashmi Anees">
-        <figcaption>
-          <strong>Available now</strong>
-          <span>GCC · remote · on-site</span>
-        </figcaption>
+        <figcaption><strong>Available now</strong><span>Remote · hybrid · on-site · GCC</span></figcaption>
       </figure>
     </section>
 
-    <div class="metrics">
-      <div class="metric"><strong>29k+</strong><span>Support tickets analyzed for SLA performance</span></div>
-      <div class="metric"><strong>10k+</strong><span>Records cleaned in SQL and Python</span></div>
-      <div class="metric"><strong>30%</strong><span>Less manual reporting at Ethqan</span></div>
-      <div class="metric"><strong>2 live</strong><span>Luxo Qatar and Alpine Infinity, Dubai</span></div>
-    </div>
+    <nav class="story" aria-label="On this page">
+      <a href="#who"><b>01</b> Who I am</a>
+      <a href="#paths"><b>02</b> Hire paths</a>
+      <a href="#work"><b>03</b> Live proof</a>
+      <a href="#experience"><b>04</b> Experience</a>
+      <a href="#more"><b>05</b> Beyond the role</a>
+      <a href="#contact"><b>06</b> Contact</a>
+    </nav>
 
-    <section id="offer">
-      <div class="head">
-        <h2>Two hire paths.</h2>
-        <p class="note">Build the app (React, Django, Flask) or explain the business (SQL, Power BI, Tableau).</p>
-      </div>
+    <section id="who">
+      <p class="sec-kicker">01</p>
+      <h2>Who you would be hiring.</h2>
+      <p class="sub">A full stack developer and data analyst, ready to join now. Remote, hybrid, or on-site. Also open to roles in the GCC.</p>
+    </section>
+
+    <section id="paths">
+      <p class="sec-kicker">02</p>
+      <h2>Two hire paths.</h2>
+      <p class="sub">Pick one, or both when the product and the reporting need to stay together.</p>
       <div class="lanes">
-        <article class="lane">
-          <p class="kicker">React · Django · Flask</p>
+        <article class="lane build">
+          <p class="eyebrow" style="color:#f3d7c8">Path one</p>
           <h3>Build the app.</h3>
-          <p>Production web apps with React, Django, Flask, Next.js, and PHP, plus REST APIs on MySQL or PostgreSQL. Luxo Qatar is live on React, Flask, and MySQL. Alpine Infinity is a Dubai trading-house site with a real enquiry path.</p>
+          <p>Production websites and full stack features, from the interface through the API and the database.</p>
+          <div class="stack"><span>React</span><span>Django</span><span>Flask</span></div>
         </article>
-        <article class="lane">
-          <p class="kicker">SQL · Power BI · Tableau</p>
+        <article class="lane explain">
+          <p class="eyebrow">Path two</p>
           <h3>Explain the business.</h3>
-          <p>I clean the data and turn it into KPI reports a manager can use. At Luxo I supported weekly sales and operations reviews. At Ethqan I automated reporting and cut manual effort by 30%.</p>
+          <p>Clean the data, then show the KPI, the trend, and the decision a manager can make.</p>
+          <div class="stack"><span>SQL</span><span>Power BI</span><span>Tableau</span></div>
         </article>
       </div>
     </section>
 
     <section id="work">
-      <div class="head">
-        <div>
-          <p class="kicker">Selected work</p>
-          <h2>Projects a hiring manager can open.</h2>
-        </div>
-        <div class="filters">
-          <button class="on" data-filter="all">All</button>
-          <button data-filter="data">Analytics</button>
-          <button data-filter="web">Software</button>
-        </div>
-      </div>
+      <p class="sec-kicker">03</p>
+      <h2>Live proof.</h2>
+      <p class="sub">Sites and dashboards a client can open.</p>
       <div class="work">
-        <article class="piece" data-kind="web">
+        <article class="piece">
           <div class="ph">Alpine Infinity<br>Dubai</div>
-          <div>
-            <p class="meta">New · Software</p>
-            <h3>Alpine Infinity Trading</h3>
-            <p>Editorial website for a Dubai house supplying textiles, uniforms, footwear, and leather. Catalogue storytelling and an enquiry path from specification to inbox.</p>
-            <div class="tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">TypeScript</span></div>
-            <a class="go" href="https://www.alpinemena.com" target="_blank" rel="noopener">alpinemena.com</a>
-          </div>
+          <div><h3>Alpine Infinity</h3><p>Editorial website for a Dubai trading house: textiles, uniforms, footwear, and leather, with an enquiry path.</p></div>
+          <a class="go" href="https://www.alpinemena.com" target="_blank" rel="noopener">Open site</a>
         </article>
-        <article class="piece" data-kind="web">
-          <img src="images/luxo.png" alt="Luxo Qatar website">
-          <div>
-            <p class="meta">Software · Qatar</p>
-            <h3>Luxo International</h3>
-            <p>Production app for a Qatar trading company: React, Flask, MySQL, REST APIs, separate frontend and API domains, and Zoho email. I also reported sales and operations for management.</p>
-            <div class="tags"><span class="tag">React</span><span class="tag">Flask</span><span class="tag">MySQL</span></div>
-            <a class="go" href="https://www.luxoqatar.com/" target="_blank" rel="noopener">luxoqatar.com</a>
-          </div>
+        <article class="piece">
+          <img src="images/luxo.png" alt="Luxo Qatar">
+          <div><h3>Luxo Qatar</h3><p>Production app in React, Flask, and MySQL, plus the sales and operations reporting around it.</p></div>
+          <a class="go" href="https://www.luxoqatar.com/" target="_blank" rel="noopener">Open site</a>
         </article>
-        <article class="piece" data-kind="data">
-          <img src="images/DXC.png" alt="Helpdesk SLA dashboard">
-          <div>
-            <p class="meta">Analytics · Power BI</p>
-            <h3>Helpdesk and SLA performance</h3>
-            <p>29,000+ support tickets. SQL and Python for compliance, response time, resolution rate, and repeating bottlenecks.</p>
-            <div class="tags"><span class="tag">Power BI</span><span class="tag">Python</span><span class="tag">SQL</span></div>
-            <a class="go" href="https://github.com/ashmianees/DXC_Helpdesk_Analytics" target="_blank" rel="noopener">View on GitHub</a>
-          </div>
+        <article class="piece">
+          <img src="images/Fishgrid.png" alt="Fish-Grid">
+          <div><h3>Fish-Grid</h3><p>Aquaculture platform with onboarding, pricing, dashboards, and role-based access.</p></div>
+          <a class="go" href="https://github.com/ashmianees/Fishgrid-host" target="_blank" rel="noopener">GitHub</a>
         </article>
-        <article class="piece" data-kind="data">
-          <img src="images/Airline.png" alt="Airline operations dashboard">
-          <div>
-            <p class="meta">Analytics · Power BI</p>
-            <h3>Airline operations</h3>
-            <p>Delay patterns, cancellations, and route performance so operations can see which routes slip.</p>
-            <div class="tags"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">Power BI</span></div>
-            <a class="go" href="https://github.com/ashmianees/airline-operations-analytics" target="_blank" rel="noopener">View on GitHub</a>
-          </div>
+        <article class="piece">
+          <img src="images/vitacalls.png" alt="Vita Calls">
+          <div><h3>Vita Calls</h3><p>Diet and nutrition app with recommendations, user data, and a booking flow.</p></div>
+          <a class="go" href="https://github.com/ashmianees/Vitacalls" target="_blank" rel="noopener">GitHub</a>
         </article>
-        <article class="piece" data-kind="data">
+        <article class="piece">
+          <img src="images/DXC.png" alt="SLA dashboard">
+          <div><h3>SLA dashboard</h3><p>29,000 support tickets. Compliance, response time, resolution rate, and repeating bottlenecks.</p></div>
+          <a class="go" href="https://github.com/ashmianees/DXC_Helpdesk_Analytics" target="_blank" rel="noopener">GitHub</a>
+        </article>
+        <article class="piece">
+          <img src="images/Airline.png" alt="Airline operations">
+          <div><h3>Airline operations</h3><p>Delays, cancellations, and route performance in Power BI.</p></div>
+          <a class="go" href="https://github.com/ashmianees/airline-operations-analytics" target="_blank" rel="noopener">GitHub</a>
+        </article>
+        <article class="piece">
           <div class="ph">Retail sales<br>2019–2024</div>
-          <div>
-            <p class="meta">Analytics · Tableau</p>
-            <h3>Retail sales analysis</h3>
-            <p>Tableau story across products, regions, and customer segments, with KPI scorecards and drill-downs.</p>
-            <div class="tags"><span class="tag">Tableau</span><span class="tag">SQL</span></div>
-            <a class="go" href="https://public.tableau.com/app/profile/ashmi.anees/viz/EU-NON/RetailSalesAnalysis20192024" target="_blank" rel="noopener">Open on Tableau Public</a>
-          </div>
+          <div><h3>Retail sales</h3><p>Tableau story across products, regions, and customer segments.</p></div>
+          <a class="go" href="https://public.tableau.com/app/profile/ashmi.anees/viz/EU-NON/RetailSalesAnalysis20192024" target="_blank" rel="noopener">Tableau</a>
         </article>
-        <article class="piece" data-kind="data">
-          <div class="ph">Textiles KPI</div>
-          <div>
-            <p class="meta">Analytics · Power BI</p>
-            <h3>Textiles KPI reporting</h3>
-            <p>Multi-source business data brought into automated KPI dashboards for performance reviews.</p>
-            <div class="tags"><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">DAX</span></div>
-            <a class="go" href="https://github.com/ashmianees/Textiles-analysis-using-power-bi" target="_blank" rel="noopener">View on GitHub</a>
-          </div>
-        </article>
-        <article class="piece" data-kind="web">
-          <img src="images/Fishgrid.png" alt="Fishgrid platform">
-          <div>
-            <p class="meta">Software · Django</p>
-            <h3>Fish-Grid</h3>
-            <p>Aquaculture platform with onboarding, pricing, dashboards, and role-based access. Related fish-disease research was published at NCECA 2025.</p>
-            <div class="tags"><span class="tag">Django</span><span class="tag">MariaDB</span><span class="tag">Python</span></div>
-            <a class="go" href="https://github.com/ashmianees/Fishgrid-host" target="_blank" rel="noopener">View on GitHub</a>
-          </div>
-        </article>
-        <article class="piece" data-kind="web">
-          <img src="images/vitacalls.png" alt="Vita Calls app">
-          <div>
-            <p class="meta">Software · PHP</p>
-            <h3>Vita Calls</h3>
-            <p>Diet and nutrition app with personalized recommendations, user data, and a responsive booking flow.</p>
-            <div class="tags"><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span></div>
-            <a class="go" href="https://github.com/ashmianees/Vitacalls" target="_blank" rel="noopener">View on GitHub</a>
-          </div>
-        </article>
-        <article class="piece" data-kind="data">
-          <img src="images/Churn%20prediction.png" alt="Churn prediction app">
-          <div>
-            <p class="meta">Analytics · Python</p>
-            <h3>Churn prediction</h3>
-            <p>Streamlit app that flags customers likely to leave and shows the drivers a retention team can use.</p>
-            <div class="tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Streamlit</span></div>
-            <a class="go" href="https://github.com/ashmianees/Churn-Prediction" target="_blank" rel="noopener">View on GitHub</a>
-          </div>
-        </article>
-        <article class="piece" data-kind="data">
-          <img src="images/Road%20Accident.png" alt="Road accident dashboard">
-          <div>
-            <p class="meta">Analytics · Tableau</p>
-            <h3>Road accident analysis</h3>
-            <p>Hotspots, seasons, and high-risk categories for a planning conversation.</p>
-            <div class="tags"><span class="tag">Tableau</span><span class="tag">EDA</span></div>
-            <a class="go" href="https://public.tableau.com/views/Road_Accident_17563673160150/Dashboard1?:language=en-GB&:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener">Open the dashboard</a>
-          </div>
+        <article class="piece">
+          <div class="ph">Textiles<br>KPI</div>
+          <div><h3>Textiles KPI</h3><p>Multi-source business data in automated Power BI scorecards.</p></div>
+          <a class="go" href="https://github.com/ashmianees/Textiles-analysis-using-power-bi" target="_blank" rel="noopener">GitHub</a>
         </article>
       </div>
     </section>
 
     <section id="experience">
-      <div class="head">
-        <div>
-          <p class="kicker">Experience</p>
-          <h2>Roles, with the outcome.</h2>
-        </div>
-      </div>
+      <p class="sec-kicker">04</p>
+      <h2>Where this was used.</h2>
       <div class="jobs">
         <article class="job">
-          <div><p class="when">Jun 2025 – May 2026</p><p>Remote contract · Qatar</p></div>
+          <div><p class="when">Jun 2025 – May 2026</p><p>Qatar · remote contract</p></div>
           <div>
-            <h3>Full stack developer and digital operations analyst</h3>
-            <p>Luxo International Trading</p>
+            <h3>Full stack developer and analyst</h3>
+            <p class="org">Luxo International Trading</p>
             <ul>
-              <li>Shipped a production app with React, Flask, and MySQL, including REST APIs and Zoho email.</li>
-              <li>Separated the frontend and API onto their own subdomains.</li>
-              <li>Built weekly KPI reports from sales and operations data.</li>
+              <li>Shipped the live app in React, Flask, and MySQL.</li>
+              <li>Reported weekly sales and operations for management.</li>
             </ul>
           </div>
         </article>
         <article class="job">
-          <div><p class="when">Dec 2024 – May 2025</p><p>Data analytics internship</p></div>
+          <div><p class="when">Dec 2024 – May 2025</p><p>Internship</p></div>
           <div>
             <h3>Data analytics intern</h3>
-            <p>Ethqan Technology</p>
+            <p class="org">Ethqan Technology</p>
             <ul>
-              <li>Cleaned and validated 10,000+ records in SQL and Python.</li>
-              <li>Built Power BI dashboards for KPI tracking.</li>
-              <li>Automated reporting and reduced manual effort by 30%.</li>
+              <li>Cleaned 10,000+ records in SQL and Python.</li>
+              <li>Cut manual reporting effort by 30% with Power BI.</li>
             </ul>
           </div>
         </article>
         <article class="job">
-          <div><p class="when">Sep 2024</p><p>One-month internship</p></div>
+          <div><p class="when">Sep 2024</p><p>Internship</p></div>
           <div>
             <h3>Full stack developer intern</h3>
-            <p>Nezuware</p>
-            <ul>
-              <li>Built features with Django, JavaScript, Bootstrap, and MySQL.</li>
-              <li>Improved query retrieval performance by about 20%.</li>
-            </ul>
+            <p class="org">Nezuware</p>
+            <ul><li>Django, JavaScript, and MySQL features. Query retrieval improved by about 20%.</li></ul>
           </div>
         </article>
         <article class="job">
-          <div><p class="when">May 2023</p><p>Short internship</p></div>
+          <div><p class="when">May 2023</p><p>Internship</p></div>
           <div>
             <h3>Python Django intern</h3>
-            <p>CTS InfoTech</p>
-            <ul><li>Backend modules in Python and Django, with API work, database integration, and testing.</li></ul>
+            <p class="org">CTS InfoTech</p>
+            <ul><li>Backend modules, API work, and database integration.</li></ul>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="about">
-      <div class="head">
-        <div>
-          <p class="kicker">About</p>
-          <h2>Analyst first. Developer when the product needs it.</h2>
-        </div>
-      </div>
+    <section id="more">
+      <p class="sec-kicker">05</p>
+      <h2>Beyond the job title.</h2>
       <div class="proof">
         <article class="panel">
-          <p class="kicker">Education</p>
-          <h3>MCA, dual degree</h3>
-          <p>Amal Jyothi College of Engineering, APJ Abdul Kalam Technological University. November 2020 – May 2025. CGPA 7.29.</p>
+          <p class="eyebrow">Patent</p>
+          <h3>202441077216</h3>
+          <p>Co-inventor of an automated ear and eye drop dispenser.</p>
         </article>
         <article class="panel">
-          <p class="kicker">2024</p>
-          <h3>Published patent</h3>
-          <p>Co-inventor of an automated ear and eye drop dispenser. Application No. 202441077216.</p>
+          <p class="eyebrow">Research</p>
+          <h3>NCECA 2025</h3>
+          <p>Machine learning for fish-disease detection, published at NCECA 2025.</p>
         </article>
         <article class="panel">
-          <p class="kicker">NCECA 2025</p>
-          <h3>Research and a funded prototype</h3>
-          <p>Machine learning for fish disease detection, published at NCECA 2025. Founder of Drip Drop, a healthcare dispensing prototype funded by KSUM.</p>
+          <p class="eyebrow">Founder</p>
+          <h3>Drip Drop</h3>
+          <p>Healthcare dispensing prototype funded by Kerala Startup Mission.</p>
         </article>
-      </div>
-      <div class="panel" style="margin-top:12px">
-        <h3>Tools I use on a real task</h3>
-        <div class="skills">
-          <span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Tableau</span><span class="chip">Excel</span><span class="chip">DAX</span>
-          <span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">scikit-learn</span>
-          <span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Django</span><span class="chip">Flask</span>
-          <span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">REST APIs</span><span class="chip">Git</span>
-        </div>
       </div>
     </section>
 
     <section id="contact">
-      <div class="head">
-        <div>
-          <p class="kicker">Contact</p>
-          <h2>If the role is open, write.</h2>
-        </div>
-      </div>
       <div class="contact">
-        <div class="panel">
-          <p>Data analyst, reporting analyst, business analyst, software developer, or full stack. GCC, remote, hybrid, or on-site.</p>
+        <div>
+          <p class="sec-kicker">06</p>
+          <h2>Write, or call.</h2>
           <a class="mail" href="mailto:ashmianees12@gmail.com">ashmianees12@gmail.com</a>
           <div class="list">
-            <a href="https://www.linkedin.com/in/ashmianees" target="_blank" rel="noopener">linkedin.com/in/ashmianees</a>
-            <a href="https://github.com/ashmianees" target="_blank" rel="noopener">github.com/ashmianees</a>
-          </div>
-          <div class="actions">
-            <a class="btn solid" href="mailto:ashmianees12@gmail.com?subject=Role%20for%20Ashmi%20Anees">Email a role</a>
+            <a href="tel:+918921492135">+91 89214 92135</a>
+            <a href="https://www.linkedin.com/in/ashmianees" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/ashmianees" target="_blank" rel="noopener">GitHub</a>
           </div>
         </div>
         <div class="panel">
           <h3>A short brief is enough.</h3>
-          <p>The business question, the stack if you already have one, and when you need a first version. I reply with what I would ship first.</p>
+          <p>Say whether you need the app, the analysis, or both, and when you need a first version.</p>
         </div>
       </div>
     </section>
   </main>
   <footer>
-    <span>Ashmi Anees · Data analyst and developer</span>
+    <span>Ashmi Anees · Developer and data analyst</span>
     <a href="#top">Back to top</a>
   </footer>
   <script>
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const intro = document.getElementById("intro");
-    if (reduce) {
-      intro.remove();
+    if (reduce) { intro.remove(); document.body.classList.remove("locked"); }
+    else setTimeout(() => {
+      intro.classList.add("leave");
       document.body.classList.remove("locked");
-    } else {
-      setTimeout(() => {
-        intro.classList.add("leave");
-        document.body.classList.remove("locked");
-        setTimeout(() => intro.remove(), 950);
-      }, 2600);
-    }
+      setTimeout(() => intro.remove(), 950);
+    }, 2600);
     const bar = document.getElementById("bar");
     addEventListener("scroll", () => bar.classList.toggle("scrolled", scrollY > 8), { passive: true });
     const menu = document.getElementById("menu");
@@ -534,30 +400,6 @@
       menu.setAttribute("aria-expanded", String(open));
     });
     links.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => links.classList.remove("open")));
-    document.querySelectorAll(".filters button").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".filters button").forEach((b) => b.classList.remove("on"));
-        btn.classList.add("on");
-        const kind = btn.dataset.filter;
-        document.querySelectorAll(".piece").forEach((el) => {
-          el.classList.toggle("hide", kind !== "all" && el.dataset.kind !== kind);
-        });
-      });
-    });
-    const photo = document.querySelector(".hero-photo img");
-    const stage = document.getElementById("heroPhoto");
-    if (!reduce && photo) {
-      stage.addEventListener("pointermove", (e) => {
-        const r = stage.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width - 0.5;
-        photo.style.animation = "none";
-        photo.style.transform = `rotateY(${x * 18}deg) rotateX(${((e.clientY - r.top) / r.height - 0.5) * -8}deg)`;
-      });
-      stage.addEventListener("pointerleave", () => {
-        photo.style.animation = "";
-        photo.style.transform = "";
-      });
-    }
   </script>
 </body>
 </html>
