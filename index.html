@@ -3,413 +3,561 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ashmi Anees | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <meta name="description" content="Ashmi Anees — MCA graduate, data analyst and full stack developer. SQL, Power BI, Tableau, React, Django. Open to GCC, remote, and on-site roles.">
+  <meta name="theme-color" content="#f4f0e7">
+  <title>Ashmi Anees — Data Analyst & Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,560;0,9..144,640;1,9..144,520&family=Outfit:wght@360;460;560&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:#0b1021;
-      --surface:#0f172a;
-      --muted:#c5d0e6;
-      --accent:#4fd1c5;
-      --accent-2:#f6c177;
-      --stroke:rgba(255,255,255,0.06);
-      --shadow:0 18px 50px rgba(0,0,0,0.45);
-      --max:1100px;
+      --paper: #f4f0e7;
+      --ink: #1c211c;
+      --muted: #5e655c;
+      --line: #d9d0c0;
+      --teal: #1e4a38;
+      --soft: #e7f0ea;
+      --gold: #8a6a32;
+      --max: 1120px;
     }
-    *{box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
-    body{
-      margin:0;
-      font-family:'Manrope', system-ui, -apple-system, sans-serif;
-      background:radial-gradient(circle at 10% 20%, rgba(79,209,197,0.08), transparent 30%), radial-gradient(circle at 80% 0%, rgba(246,193,119,0.12), transparent 25%), var(--bg);
-      color:#e8ecf5;
-      overflow-x:hidden;
-      line-height:1.6;
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Outfit", system-ui, sans-serif;
+      line-height: 1.6;
     }
-    a{color:inherit;text-decoration:none;}
-    header{
-      position:sticky;
-      top:0; z-index:10;
-      backdrop-filter:blur(10px);
-      background:rgba(11,16,33,0.82);
-      border-bottom:1px solid var(--stroke);
+    body.locked { overflow: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 560; letter-spacing: -0.03em; margin: 0; }
+    p { margin: 0; }
+    .skip { position: absolute; left: 12px; top: -40px; background: var(--teal); color: #fff; padding: 8px 12px; z-index: 80; }
+    .skip:focus { top: 12px; }
+
+    .intro {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      background:
+        radial-gradient(ellipse at 50% 80%, rgba(30, 74, 56, 0.08), transparent 46%),
+        var(--paper);
+      display: grid;
+      place-items: center;
+      perspective: 1400px;
+      transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
     }
-    nav{
-      max-width:var(--max);
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:14px 22px;
+    .intro.leave { transform: translateY(-102%); pointer-events: none; }
+    .intro-stage { text-align: center; transform-style: preserve-3d; }
+    .intro-role {
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-weight: 560;
+      color: var(--teal);
+      opacity: 0;
+      animation: rise 0.7s 0.15s ease forwards;
     }
-    .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:0.6px;}
-    .pill{
-      padding:10px 16px;
-      border:1px solid var(--stroke);
-      border-radius:999px;
-      font-size:0.95rem;
-      transition:all .25s ease;
-      box-shadow:0 8px 24px rgba(0,0,0,0.15);
-      background:rgba(255,255,255,0.02);
+    .intro-name { line-height: 0.9; margin: 8px 0 0; perspective: 800px; }
+    .intro-name span {
+      display: inline-block;
+      font-size: clamp(64px, 12vw, 128px);
+      opacity: 0;
+      transform: translateZ(-240px) rotateX(28deg) scale(0.72);
+      animation: namepop 1s cubic-bezier(0.16, 1.35, 0.4, 1) forwards;
     }
-    .pill:hover{border-color:var(--accent); color:var(--accent); transform:translateY(-2px); box-shadow:0 12px 30px rgba(79,209,197,0.18);}
-    main{max-width:var(--max); margin:0 auto; padding:40px 22px 70px 22px;}
-    section{padding:70px 0; opacity:0;}
-    h1,h2,h3{font-family:'Space Grotesk',sans-serif; margin:0;}
-    h1{font-size:clamp(32px,4vw,48px); letter-spacing:-0.8px;}
-    h2{font-size:clamp(24px,3vw,32px); margin-bottom:14px;}
-    p{color:var(--muted); margin:10px 0;}
-    .hero{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-      align-items:center;
-      gap:30px;
+    .intro-name span + span { margin-left: 0.18em; font-style: italic; color: var(--teal); animation-delay: 0.12s; }
+    .intro-photo {
+      width: min(320px, 62vw);
+      margin: -8px auto 0;
+      opacity: 0;
+      transform: translateZ(-180px) scale(0.22) rotateY(-24deg);
+      filter: drop-shadow(0 28px 18px rgba(28, 33, 28, 0.18));
+      animation: photopop 1.15s 0.45s cubic-bezier(0.16, 1.25, 0.32, 1) forwards;
     }
-    .hero-text{display:flex; flex-direction:column; gap:18px;}
-    .hero-buttons{display:flex; gap:12px; flex-wrap:wrap;}
-    .btn{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:12px 18px;
-      border-radius:14px;
-      font-weight:600;
-      border:1px solid transparent;
-      transition:all .2s ease;
+    @keyframes rise { to { opacity: 1; transform: none; } }
+    @keyframes namepop {
+      60% { opacity: 1; transform: translateZ(70px) rotateX(-4deg) scale(1.04); }
+      100% { opacity: 1; transform: translateZ(24px) rotateX(0) scale(1); }
     }
-    .btn.primary{background:linear-gradient(120deg, var(--accent), var(--accent-2)); color:#0a0d18; box-shadow:0 12px 32px rgba(79,209,197,0.35);}
-    .btn.secondary{border-color:var(--stroke); color:#e8ecf5; background:rgba(255,255,255,0.03);}
-    .btn.secondary:hover{border-color:var(--accent); color:var(--accent);}
-    .btn:hover{transform:translateY(-2px); box-shadow:0 12px 28px rgba(246,193,119,0.25);}
-    .portrait{
-      background:linear-gradient(160deg, rgba(79,209,197,0.2), rgba(246,193,119,0.18));
-      border:1px solid var(--stroke);
-      border-radius:22px;
-      padding:12px;
-      box-shadow:var(--shadow);
+    @keyframes photopop {
+      0% { opacity: 0; transform: translateZ(-180px) scale(0.22) rotateY(-24deg); }
+      68% { opacity: 1; transform: translateZ(110px) scale(1.08) rotateY(8deg); }
+      100% { opacity: 1; transform: translateZ(36px) scale(1) rotateY(0); }
     }
-    .portrait img{width:100%; border-radius:16px; display:block;}
-    .chips{display:flex; flex-wrap:wrap; gap:8px;}
-    .chip{padding:8px 12px; border-radius:10px; background:rgba(255,255,255,0.04); border:1px solid var(--stroke); font-size:0.92rem;}
-    .chip.pulse{animation:pulse 3s infinite ease-in-out;}
-    .stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; margin-top:8px;}
-    .stat{
-      padding:14px 16px;
-      border:1px solid var(--stroke);
-      border-radius:14px;
-      background:rgba(255,255,255,0.03);
-      text-align:left;
-      transition:border-color .2s ease;
+
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(244, 240, 231, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
     }
-    .stat strong{display:block; font-size:1.2rem; color:#fff;}
-    .stat:hover{border-color:rgba(79,209,197,0.4);}
-    .section-header{display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;}
-    .section-note{color:var(--muted); font-size:0.98rem;}
-    .cards{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:18px;}
-    .card{
-      position:relative;
-      border:1px solid var(--stroke);
-      border-radius:16px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-      box-shadow:var(--shadow);
-      overflow:hidden;
-      transform:translateY(20px);
-      opacity:0;
-      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    header.scrolled { border-bottom-color: var(--line); }
+    nav {
+      max-width: var(--max); margin: 0 auto; padding: 16px 22px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
     }
-    .card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      border-radius:16px;
-      padding:1px;
-      background:linear-gradient(135deg, rgba(79,209,197,0.5), rgba(246,193,119,0.45), rgba(96,165,250,0.4));
-      -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite:xor;
-      mask-composite:exclude;
-      opacity:0;
-      transition:opacity .25s ease;
-      pointer-events:none;
+    .brand { font-family: "Fraunces", serif; font-size: 1.15rem; }
+    .brand span { color: var(--teal); font-style: italic; }
+    .nav-links { display: flex; gap: 22px; align-items: center; }
+    .nav-links a { color: var(--muted); }
+    .nav-links a:hover { color: var(--ink); }
+    .hire { color: #f7f4ec !important; background: var(--teal); border-radius: 999px; padding: 8px 14px; }
+    .menu { display: none; width: 44px; height: 42px; border: 1px solid var(--line); border-radius: 10px; }
+    main { max-width: var(--max); margin: 0 auto; padding: 0 22px 48px; }
+    .hero {
+      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 36px;
+      align-items: end; padding: 42px 0 12px;
     }
-    .card:hover{transform:translateY(-8px); box-shadow:0 18px 38px rgba(0,0,0,0.35); border-color:rgba(79,209,197,0.4);}
-    .card:hover::before{opacity:1;}
-    .card img{width:100%; height:180px; object-fit:cover;}
-    .card-content{padding:16px;}
-    .tags{display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 6px 0;}
-    .tag{padding:6px 10px; background:rgba(79,209,197,0.15); color:var(--accent); border-radius:999px; font-size:0.85rem; border:1px solid rgba(79,209,197,0.35);}
-    .links{display:flex; gap:10px; flex-wrap:wrap;}
-    .link-btn{
-      padding:10px 14px;
-      border-radius:10px;
-      background:rgba(255,255,255,0.04);
-      border:1px solid var(--stroke);
-      font-weight:600;
-      font-size:0.95rem;
-      transition:all .2s;
+    .kicker { color: var(--teal); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 560; }
+    h1 { font-size: clamp(40px, 5.4vw, 68px); line-height: 0.96; margin: 10px 0 14px; }
+    h1 em { font-style: italic; color: var(--teal); }
+    .lede { color: var(--muted); font-size: 1.06rem; max-width: 54ch; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .btn {
+      display: inline-flex; align-items: center; min-height: 46px; padding: 0 16px;
+      border-radius: 999px; border: 1px solid var(--ink); font-weight: 560;
     }
-    .link-btn:hover{border-color:var(--accent); color:var(--accent);}
-    .about-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:18px;}
-    .panel{
-      padding:16px;
-      border:1px solid var(--stroke);
-      border-radius:14px;
-      background:rgba(255,255,255,0.03);
-      box-shadow:var(--shadow);
+    .btn.solid { background: var(--ink); color: var(--paper); }
+    .btn:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
+    .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+    .hero-photo { position: relative; perspective: 900px; min-height: 420px; }
+    .hero-photo img {
+      width: min(100%, 420px);
+      margin-left: auto;
+      filter: drop-shadow(0 24px 16px rgba(28, 33, 28, 0.16));
+      transform: rotateY(-8deg);
+      animation: floaty 5.5s ease-in-out infinite;
     }
-    .contact-card{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-      gap:16px;
-      padding:20px;
-      border:1px solid var(--stroke);
-      border-radius:16px;
-      background:rgba(255,255,255,0.03);
-      box-shadow:var(--shadow);
+    .hero-photo figcaption {
+      position: absolute; left: 8px; bottom: 18px;
+      background: rgba(251, 248, 242, 0.94); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px;
     }
-    .contact-item{display:flex; align-items:center; gap:10px;}
-    .contact-item span{font-weight:600;}
-    footer{padding:20px 0; text-align:center; color:var(--muted);}
-    @keyframes pulse{
-      0%,100%{box-shadow:0 0 0 0 rgba(79,209,197,0.25);}
-      50%{box-shadow:0 0 0 12px rgba(79,209,197,0);}
+    .hero-photo strong { display: block; font-family: "Fraunces", serif; }
+    .hero-photo span { color: var(--muted); font-size: 0.86rem; }
+    @keyframes floaty { 50% { transform: rotateY(-8deg) translateY(-8px); } }
+    .metrics {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 8px;
     }
-    @media (max-width:640px){
-      nav{padding:12px 16px;}
-      .section-header{flex-direction:column; align-items:flex-start; gap:8px;}
-      .card img{height:160px;}
+    .metric { padding: 18px 14px 18px 0; }
+    .metric + .metric { border-left: 1px solid var(--line); padding-left: 16px; }
+    .metric strong { display: block; font-family: "Fraunces", serif; font-size: 1.65rem; }
+    .metric span { color: var(--muted); font-size: 0.88rem; }
+    section { padding: 68px 0 8px; }
+    .head { display: flex; justify-content: space-between; gap: 18px; align-items: end; margin-bottom: 18px; }
+    h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1; }
+    .note, .lane p, .panel p, .piece p, .job li { color: var(--muted); }
+    .lanes, .proof, .contact { display: grid; gap: 14px; }
+    .lanes, .contact { grid-template-columns: 1.2fr 0.8fr; }
+    .lanes { grid-template-columns: 1fr 1fr; }
+    .proof { grid-template-columns: repeat(3, 1fr); }
+    .lane, .panel, .job, .piece {
+      background: #fbf8f2; border: 1px solid var(--line); border-radius: 18px;
+    }
+    .lane, .panel, .job { padding: 20px; }
+    .lane h3, .panel h3 { font-size: 1.45rem; margin: 8px 0; }
+    .filters { display: flex; gap: 14px; }
+    .filters button { color: var(--muted); border-bottom: 2px solid transparent; padding: 4px 0; }
+    .filters button.on { color: var(--ink); border-bottom-color: var(--teal); }
+    .work { display: grid; gap: 12px; }
+    .piece { display: grid; grid-template-columns: 260px 1fr; gap: 18px; align-items: center; padding: 12px; }
+    .piece:hover { border-color: var(--teal); }
+    .piece img, .ph { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; background: #ebe4d6; }
+    .ph { display: grid; place-items: center; text-align: center; color: var(--teal); font-family: "Fraunces", serif; font-size: 1.35rem; padding: 12px; }
+    .meta { color: var(--gold); font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 560; }
+    .piece h3 { font-size: 1.35rem; margin: 4px 0 6px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+    .tag { font-size: 0.8rem; background: var(--soft); color: var(--teal); border-radius: 999px; padding: 4px 8px; }
+    .go { color: var(--teal); font-weight: 560; }
+    .piece.hide { display: none; }
+    .jobs { display: grid; gap: 12px; }
+    .job { display: grid; grid-template-columns: 200px 1fr; gap: 10px; }
+    .when { color: var(--teal); font-weight: 560; }
+    .job ul { margin: 8px 0 0; padding-left: 18px; }
+    .skills { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+    .chip { border: 1px solid var(--line); border-radius: 999px; padding: 7px 11px; background: #fff; }
+    .mail { font-family: "Fraunces", serif; font-size: clamp(28px, 4vw, 42px); line-height: 1.05; display: inline-block; margin-top: 8px; }
+    .mail:hover { color: var(--teal); }
+    .list { display: grid; gap: 6px; margin-top: 14px; }
+    .list a { color: var(--teal); }
+    footer {
+      max-width: var(--max); margin: 24px auto 0; padding: 16px 22px 28px;
+      border-top: 1px solid var(--line); display: flex; justify-content: space-between; color: var(--muted);
+    }
+    @media (max-width: 860px) {
+      .hero, .lanes, .piece, .job, .proof, .contact, .metrics { grid-template-columns: 1fr; }
+      .metric + .metric { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); }
+      .hero-photo { min-height: 0; }
+      .hero-photo img { margin: 0 auto; }
+      .menu { display: grid; place-items: center; }
+      .nav-links {
+        display: none; position: absolute; left: 16px; right: 16px; top: 68px;
+        flex-direction: column; align-items: flex-start; background: #fbf8f2;
+        border: 1px solid var(--line); border-radius: 14px; padding: 14px;
+      }
+      .nav-links.open { display: flex; }
+      .head, footer { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .intro { display: none; }
+      .intro-name span, .intro-photo, .hero-photo img { animation: none; opacity: 1; transform: none; }
     }
   </style>
 </head>
-<body>
-  <header>
+<body class="locked">
+  <a class="skip" href="#work">Skip to work</a>
+  <div class="intro" id="intro">
+    <div class="intro-stage">
+      <p class="intro-role">Data analyst · Full stack developer</p>
+      <h1 class="intro-name"><span>Ashmi</span><span>Anees</span></h1>
+      <img class="intro-photo" src="images/ashmi-cutout.png" alt="">
+    </div>
+  </div>
+
+  <header id="bar">
     <nav>
-      <div class="brand">Ashmi Anees</div>
-      <div class="chips">
-        <a class="pill" href="#projects">Web</a>
-        <a class="pill" href="#analytics">Analytics</a>
-        <a class="pill" href="#about">About</a>
-        <a class="pill" href="#contact">Contact</a>
+      <a class="brand" href="#top">Ashmi <span>Anees</span></a>
+      <div class="nav-links" id="links">
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#about">About</a>
+        <a class="hire" href="#contact">Hire me</a>
       </div>
+      <button class="menu" id="menu" aria-label="Open menu" aria-expanded="false">Menu</button>
     </nav>
   </header>
 
-  <main>
-    <section id="hero">
-      <div class="hero">
-        <div class="hero-text">
-          <p class="chip" style="border-color:rgba(246,193,119,0.35); color:var(--accent-2); background:rgba(246,193,119,0.12); width:max-content;">Software Developer / Data Analyst</p>
-          <h1>Building clean web experiences and data stories that move decisions.</h1>
-          <p>I ship full-stack features and analytical dashboards that turn messy data into concise, actionable insights. Recently delivered a GCC client website end-to-end and love collaborating across regions.</p>
-          <div class="hero-buttons">
-            <a class="btn primary" href="mailto:ashmianees12@gmail.com">Book a call</a>
-            <a class="btn secondary" href="#projects">See recent work</a>
-            <span class="chip pulse" style="border-color:rgba(79,209,197,0.35); color:var(--accent); background:rgba(79,209,197,0.12);">Open to UAE/GCC, Kerala & remote</span>
-          </div>
-          <div class="stats">
-            <div class="stat">
-              <strong>12+</strong>
-              <span>End-to-end dashboards & apps shipped</span>
-            </div>
-            <div class="stat">
-              <strong>7</strong>
-              <span>Showcase projects below</span>
-            </div>
-            <div class="stat">
-              <strong>Global-ready</strong>
-              <span>Remote worldwide · Onsite UAE/GCC</span>
-            </div>
-          </div>
-        </div>
-        <div class="portrait">
-          <img src="images/Ashmi_Anees.png" alt="Portrait of Ashmi Anees">
+  <main id="top">
+    <section class="hero">
+      <div>
+        <p class="kicker">MCA · Data analyst · Full stack developer</p>
+        <h1>I turn business data into decisions, <em>and ship the product around them.</em></h1>
+        <p class="lede">MCA graduate. I analyze with SQL, Python, Power BI, and Tableau, and I build the application in React, Django, and Flask. Open to GCC, remote, hybrid, and on-site roles. Immediate joiner.</p>
+        <div class="actions">
+          <a class="btn solid" href="#contact">Start a conversation</a>
+          <a class="btn" href="#work">View selected work</a>
         </div>
       </div>
+      <figure class="hero-photo" id="heroPhoto">
+        <img src="images/ashmi-cutout.png" alt="Ashmi Anees">
+        <figcaption>
+          <strong>Available now</strong>
+          <span>GCC · remote · on-site</span>
+        </figcaption>
+      </figure>
     </section>
 
-    <section id="projects">
-      <div class="section-header">
-        <h2>Web & Product Builds</h2>
-        <p class="section-note">Customer-facing sites, apps, and platforms delivered end-to-end.</p>
+    <div class="metrics">
+      <div class="metric"><strong>29k+</strong><span>Support tickets analyzed for SLA performance</span></div>
+      <div class="metric"><strong>10k+</strong><span>Records cleaned in SQL and Python</span></div>
+      <div class="metric"><strong>30%</strong><span>Less manual reporting at Ethqan</span></div>
+      <div class="metric"><strong>2 live</strong><span>Luxo Qatar and Alpine Infinity, Dubai</span></div>
+    </div>
+
+    <section id="offer">
+      <div class="head">
+        <h2>How I can help a team.</h2>
+        <p class="note">Hire me for the dashboard, the application, or both when they need to stay in sync.</p>
       </div>
-      <div class="cards">
-        <article class="card">
-          <img src="images/luxo.png" alt="Luxo Qatar corporate site screenshot">
-          <div class="card-content">
-            <h3>Luxo Qatar Corporate Site</h3>
-            <p>End-to-end brochure site for a GCC client with responsive layout, bilingual-ready sections, lead capture, and SEO basics tuned for regional search.</p>
-            <div class="tags">
-              <span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">SEO</span>
-            </div>
-            <div class="links">
-              <a class="link-btn" href="https://www.luxoqatar.com/" target="_blank" rel="noopener">View live</a>
-            </div>
-          </div>
+      <div class="lanes">
+        <article class="lane">
+          <p class="kicker">Data analyst</p>
+          <h3>Make the numbers usable.</h3>
+          <p>I collect, clean, and validate structured data, then build KPI reports in Power BI, Tableau, and Excel. At Luxo I supported weekly sales and operations reviews. At Ethqan I automated reporting and cut manual effort by 30%.</p>
         </article>
-
-        <article class="card">
-          <img src="images/Fishgrid.png" alt="Fishgrid aquaculture platform">
-          <div class="card-content">
-            <h3>Fishgrid</h3>
-            <p>Centralized aquaculture platform with producer onboarding, pricing, and secure role-based access for supply-side partners.</p>
-            <div class="tags">
-              <span class="tag">Django</span><span class="tag">Bootstrap</span><span class="tag">PostgreSQL</span>
-            </div>
-            <div class="links">
-              <a class="link-btn" href="https://github.com/ashmianees/Fishgrid-host" target="_blank" rel="noopener">View code</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="images/vitacalls.png" alt="Vitacalls nutrition web app">
-          <div class="card-content">
-            <h3>Vitacalls</h3>
-            <p>Nutrition & diet planning web app with appointment flow and customer onboarding, optimized for mobile clients.</p>
-            <div class="tags">
-              <span class="tag">PHP</span><span class="tag">Bootstrap</span><span class="tag">MySQL</span>
-            </div>
-            <div class="links">
-              <a class="link-btn" href="https://github.com/ashmianees/Vitacalls" target="_blank" rel="noopener">View code</a>
-            </div>
-          </div>
+        <article class="lane">
+          <p class="kicker">Software developer</p>
+          <h3>Ship the working product.</h3>
+          <p>Production web apps with React, Next.js, Django, Flask, PHP, and REST APIs. Luxo Qatar is live on React, Flask, and MySQL. Alpine Infinity is a Dubai trading-house site with a real enquiry path.</p>
         </article>
       </div>
     </section>
 
-    <section id="analytics">
-      <div class="section-header">
-        <h2>Data & Analytics Projects</h2>
-        <p class="section-note">Dashboards and ML prototypes turning raw data into decisions.</p>
+    <section id="work">
+      <div class="head">
+        <div>
+          <p class="kicker">Selected work</p>
+          <h2>Projects a hiring manager can open.</h2>
+        </div>
+        <div class="filters">
+          <button class="on" data-filter="all">All</button>
+          <button data-filter="data">Analytics</button>
+          <button data-filter="web">Software</button>
+        </div>
       </div>
-      <div class="cards">
-        <article class="card">
-          <img src="images/DXC.png" alt="SLA & Helpdesk analytics dashboard">
-          <div class="card-content">
-            <h3>SLA & Helpdesk Performance</h3>
-            <p>Analytics pipeline transforming ticket data into SLA breach monitoring, priority drilldowns, and monthly trends for ops leaders.</p>
-            <div class="tags">
-              <span class="tag">Python</span><span class="tag">pandas</span><span class="tag">Power BI</span><span class="tag">EDA</span>
-            </div>
-            <div class="links">
-              <a class="link-btn" href="https://lnkd.in/dV2xbK8M" target="_blank" rel="noopener">GitHub</a>
-            </div>
+      <div class="work">
+        <article class="piece" data-kind="web">
+          <div class="ph">Alpine Infinity<br>Dubai</div>
+          <div>
+            <p class="meta">New · Software</p>
+            <h3>Alpine Infinity Trading</h3>
+            <p>Editorial website for a Dubai house supplying textiles, uniforms, footwear, and leather. Catalogue storytelling and an enquiry path from specification to inbox.</p>
+            <div class="tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">TypeScript</span></div>
+            <a class="go" href="https://www.alpinemena.com" target="_blank" rel="noopener">alpinemena.com</a>
           </div>
         </article>
-
-        <article class="card">
-          <img src="images/Airline.png" alt="Airline operations analytics dashboard">
-          <div class="card-content">
-            <h3>Airline Operations & Customer Analytics</h3>
-            <p>On-time performance, route risk, seasonal delay patterns, and sentiment to surface operational levers for Emirates/Etihad-scale carriers.</p>
-            <div class="tags">
-              <span class="tag">SQL</span><span class="tag">Python</span><span class="tag">Power BI</span><span class="tag">Analytics</span>
-            </div>
-            <div class="links">
-              <a class="link-btn" href="mailto:ashmianees12@gmail.com?subject=Airline%20Analytics%20deck%20request">Request deck</a>
-            </div>
+        <article class="piece" data-kind="web">
+          <img src="images/luxo.png" alt="Luxo Qatar website">
+          <div>
+            <p class="meta">Software · Qatar</p>
+            <h3>Luxo International</h3>
+            <p>Production app for a Qatar trading company: React, Flask, MySQL, REST APIs, separate frontend and API domains, and Zoho email. I also reported sales and operations for management.</p>
+            <div class="tags"><span class="tag">React</span><span class="tag">Flask</span><span class="tag">MySQL</span></div>
+            <a class="go" href="https://www.luxoqatar.com/" target="_blank" rel="noopener">luxoqatar.com</a>
           </div>
         </article>
-
-        <article class="card">
-          <img src="images/Churn prediction.png" alt="Churn Prediction dashboard">
-          <div class="card-content">
-            <h3>Churn Prediction</h3>
-            <p>Streamlit app with a trained model that flags churn risk and surfaces drivers for retention teams.</p>
-            <div class="tags">
-              <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">scikit-learn</span>
-            </div>
-            <div class="links">
-              <a class="link-btn" href="https://github.com/ashmianees/Churn-Prediction" target="_blank" rel="noopener">View code</a>
-            </div>
+        <article class="piece" data-kind="data">
+          <img src="images/DXC.png" alt="Helpdesk SLA dashboard">
+          <div>
+            <p class="meta">Analytics · Power BI</p>
+            <h3>Helpdesk and SLA performance</h3>
+            <p>29,000+ support tickets. SQL and Python for compliance, response time, resolution rate, and repeating bottlenecks.</p>
+            <div class="tags"><span class="tag">Power BI</span><span class="tag">Python</span><span class="tag">SQL</span></div>
+            <a class="go" href="https://github.com/ashmianees/DXC_Helpdesk_Analytics" target="_blank" rel="noopener">View on GitHub</a>
           </div>
         </article>
+        <article class="piece" data-kind="data">
+          <img src="images/Airline.png" alt="Airline operations dashboard">
+          <div>
+            <p class="meta">Analytics · Power BI</p>
+            <h3>Airline operations</h3>
+            <p>Delay patterns, cancellations, and route performance so operations can see which routes slip.</p>
+            <div class="tags"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">Power BI</span></div>
+            <a class="go" href="https://github.com/ashmianees/airline-operations-analytics" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </article>
+        <article class="piece" data-kind="data">
+          <div class="ph">Retail sales<br>2019–2024</div>
+          <div>
+            <p class="meta">Analytics · Tableau</p>
+            <h3>Retail sales analysis</h3>
+            <p>Tableau story across products, regions, and customer segments, with KPI scorecards and drill-downs.</p>
+            <div class="tags"><span class="tag">Tableau</span><span class="tag">SQL</span></div>
+            <a class="go" href="https://public.tableau.com/app/profile/ashmi.anees/viz/EU-NON/RetailSalesAnalysis20192024" target="_blank" rel="noopener">Open on Tableau Public</a>
+          </div>
+        </article>
+        <article class="piece" data-kind="data">
+          <div class="ph">Textiles KPI</div>
+          <div>
+            <p class="meta">Analytics · Power BI</p>
+            <h3>Textiles KPI reporting</h3>
+            <p>Multi-source business data brought into automated KPI dashboards for performance reviews.</p>
+            <div class="tags"><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">DAX</span></div>
+            <a class="go" href="https://github.com/ashmianees/Textiles-analysis-using-power-bi" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </article>
+        <article class="piece" data-kind="web">
+          <img src="images/Fishgrid.png" alt="Fishgrid platform">
+          <div>
+            <p class="meta">Software · Django</p>
+            <h3>Fish-Grid</h3>
+            <p>Aquaculture platform with onboarding, pricing, dashboards, and role-based access. Related fish-disease research was published at NCECA 2025.</p>
+            <div class="tags"><span class="tag">Django</span><span class="tag">MariaDB</span><span class="tag">Python</span></div>
+            <a class="go" href="https://github.com/ashmianees/Fishgrid-host" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </article>
+        <article class="piece" data-kind="web">
+          <img src="images/vitacalls.png" alt="Vita Calls app">
+          <div>
+            <p class="meta">Software · PHP</p>
+            <h3>Vita Calls</h3>
+            <p>Diet and nutrition app with personalized recommendations, user data, and a responsive booking flow.</p>
+            <div class="tags"><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span></div>
+            <a class="go" href="https://github.com/ashmianees/Vitacalls" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </article>
+        <article class="piece" data-kind="data">
+          <img src="images/Churn%20prediction.png" alt="Churn prediction app">
+          <div>
+            <p class="meta">Analytics · Python</p>
+            <h3>Churn prediction</h3>
+            <p>Streamlit app that flags customers likely to leave and shows the drivers a retention team can use.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Streamlit</span></div>
+            <a class="go" href="https://github.com/ashmianees/Churn-Prediction" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </article>
+        <article class="piece" data-kind="data">
+          <img src="images/Road%20Accident.png" alt="Road accident dashboard">
+          <div>
+            <p class="meta">Analytics · Tableau</p>
+            <h3>Road accident analysis</h3>
+            <p>Hotspots, seasons, and high-risk categories for a planning conversation.</p>
+            <div class="tags"><span class="tag">Tableau</span><span class="tag">EDA</span></div>
+            <a class="go" href="https://public.tableau.com/views/Road_Accident_17563673160150/Dashboard1?:language=en-GB&:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener">Open the dashboard</a>
+          </div>
+        </article>
+      </div>
+    </section>
 
-        <article class="card">
-          <img src="images/Road Accident.png" alt="Road accident Tableau dashboard">
-          <div class="card-content">
-            <h3>Road Accident Analysis</h3>
-            <p>Tableau story that highlights hotspots, seasonal patterns, and high-risk categories to inform public planning.</p>
-            <div class="tags">
-              <span class="tag">Tableau</span><span class="tag">EDA</span><span class="tag">Storytelling</span>
-            </div>
-            <div class="links">
-              <a class="link-btn" href="https://public.tableau.com/views/Road_Accident_17563673160150/Dashboard1?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener">View dashboard</a>
-            </div>
+    <section id="experience">
+      <div class="head">
+        <div>
+          <p class="kicker">Experience</p>
+          <h2>Roles, with the outcome.</h2>
+        </div>
+      </div>
+      <div class="jobs">
+        <article class="job">
+          <div><p class="when">Jun 2025 – May 2026</p><p>Remote contract · Qatar</p></div>
+          <div>
+            <h3>Full stack developer and digital operations analyst</h3>
+            <p>Luxo International Trading</p>
+            <ul>
+              <li>Shipped a production app with React, Flask, and MySQL, including REST APIs and Zoho email.</li>
+              <li>Separated the frontend and API onto their own subdomains.</li>
+              <li>Built weekly KPI reports from sales and operations data.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="job">
+          <div><p class="when">Dec 2024 – May 2025</p><p>Data analytics internship</p></div>
+          <div>
+            <h3>Data analytics intern</h3>
+            <p>Ethqan Technology</p>
+            <ul>
+              <li>Cleaned and validated 10,000+ records in SQL and Python.</li>
+              <li>Built Power BI dashboards for KPI tracking.</li>
+              <li>Automated reporting and reduced manual effort by 30%.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="job">
+          <div><p class="when">Sep 2024</p><p>One-month internship</p></div>
+          <div>
+            <h3>Full stack developer intern</h3>
+            <p>Nezuware</p>
+            <ul>
+              <li>Built features with Django, JavaScript, Bootstrap, and MySQL.</li>
+              <li>Improved query retrieval performance by about 20%.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="job">
+          <div><p class="when">May 2023</p><p>Short internship</p></div>
+          <div>
+            <h3>Python Django intern</h3>
+            <p>CTS InfoTech</p>
+            <ul><li>Backend modules in Python and Django, with API work, database integration, and testing.</li></ul>
           </div>
         </article>
       </div>
     </section>
 
     <section id="about">
-      <div class="section-header">
-        <h2>About & Tooling</h2>
-        <p>How I work and what I use day to day.</p>
+      <div class="head">
+        <div>
+          <p class="kicker">About</p>
+          <h2>Analyst first. Developer when the product needs it.</h2>
+        </div>
       </div>
-      <div class="about-grid">
-        <div class="panel">
-          <h3>What I do</h3>
-          <p>I design and build web apps with clear UX, and craft data pipelines + dashboards that speak to business questions. Comfortable taking ownership from requirements to deployment.</p>
-          <div class="chips" style="margin-top:12px;">
-            <span class="chip">Full-stack features</span>
-            <span class="chip">Data storytelling</span>
-            <span class="chip">Rapid prototyping</span>
-          </div>
-        </div>
-        <div class="panel">
-          <h3>Toolbox</h3>
-          <div class="chips" style="margin-top:8px;">
-            <span class="chip">Python / pandas / scikit-learn</span>
-            <span class="chip">Django / REST</span>
-            <span class="chip">JavaScript / ES6</span>
-            <span class="chip">HTML/CSS / Bootstrap</span>
-            <span class="chip">SQL / PostgreSQL / MySQL</span>
-            <span class="chip">Tableau / Power BI</span>
-            <span class="chip">Git / CI/CD basics</span>
-          </div>
-        </div>
-        <div class="panel">
-          <h3>How I collaborate</h3>
-          <p>Short feedback loops, crisp documentation, and demos that show value early. I enjoy pairing with design, product, and stakeholders to make sure insights land.</p>
+      <div class="proof">
+        <article class="panel">
+          <p class="kicker">Education</p>
+          <h3>MCA, dual degree</h3>
+          <p>Amal Jyothi College of Engineering, APJ Abdul Kalam Technological University. November 2020 – May 2025. CGPA 7.29.</p>
+        </article>
+        <article class="panel">
+          <p class="kicker">2024</p>
+          <h3>Published patent</h3>
+          <p>Co-inventor of an automated ear and eye drop dispenser. Application No. 202441077216.</p>
+        </article>
+        <article class="panel">
+          <p class="kicker">NCECA 2025</p>
+          <h3>Research and a funded prototype</h3>
+          <p>Machine learning for fish disease detection, published at NCECA 2025. Founder of Drip Drop, a healthcare dispensing prototype funded by KSUM.</p>
+        </article>
+      </div>
+      <div class="panel" style="margin-top:12px">
+        <h3>Tools I use on a real task</h3>
+        <div class="skills">
+          <span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Tableau</span><span class="chip">Excel</span><span class="chip">DAX</span>
+          <span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">scikit-learn</span>
+          <span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Django</span><span class="chip">Flask</span>
+          <span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">REST APIs</span><span class="chip">Git</span>
         </div>
       </div>
     </section>
 
     <section id="contact">
-      <div class="section-header">
-        <h2>Let's talk</h2>
-        <p>If you're hiring or need a quick build/analysis, reach out.</p>
+      <div class="head">
+        <div>
+          <p class="kicker">Contact</p>
+          <h2>If the role is open, write.</h2>
+        </div>
       </div>
-      <div class="contact-card">
-        <div class="contact-item">
-          <span>Email</span>
-          <a href="mailto:ashmianees12@gmail.com">ashmianees12@gmail.com</a>
+      <div class="contact">
+        <div class="panel">
+          <p>Data analyst, reporting analyst, business analyst, software developer, or full stack. GCC, remote, hybrid, or on-site.</p>
+          <a class="mail" href="mailto:ashmianees12@gmail.com">ashmianees12@gmail.com</a>
+          <div class="list">
+            <a href="https://www.linkedin.com/in/ashmianees" target="_blank" rel="noopener">linkedin.com/in/ashmianees</a>
+            <a href="https://github.com/ashmianees" target="_blank" rel="noopener">github.com/ashmianees</a>
+          </div>
+          <div class="actions">
+            <a class="btn solid" href="mailto:ashmianees12@gmail.com?subject=Role%20for%20Ashmi%20Anees">Email a role</a>
+          </div>
         </div>
-        <div class="contact-item">
-          <span>Phone</span>
-          <span style="color:var(--muted);">Available on request</span>
-        </div>
-        <div class="contact-item">
-          <span>GitHub</span>
-          <a href="https://github.com/ashmianees" target="_blank" rel="noopener">github.com/ashmianees</a>
+        <div class="panel">
+          <h3>A short brief is enough.</h3>
+          <p>The business question, the stack if you already have one, and when you need a first version. I reply with what I would ship first.</p>
         </div>
       </div>
     </section>
   </main>
-
   <footer>
-    Available for software & data roles / Remote friendly
+    <span>Ashmi Anees · Data analyst and developer</span>
+    <a href="#top">Back to top</a>
   </footer>
-
   <script>
-    const sections = document.querySelectorAll("section");
-    sections.forEach((sec, i) => {
-      gsap.to(sec, {opacity:1, y:0, duration:0.9, delay:i*0.2, ease:"power2.out"});
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const intro = document.getElementById("intro");
+    if (reduce) {
+      intro.remove();
+      document.body.classList.remove("locked");
+    } else {
+      setTimeout(() => {
+        intro.classList.add("leave");
+        document.body.classList.remove("locked");
+        setTimeout(() => intro.remove(), 950);
+      }, 2600);
+    }
+    const bar = document.getElementById("bar");
+    addEventListener("scroll", () => bar.classList.toggle("scrolled", scrollY > 8), { passive: true });
+    const menu = document.getElementById("menu");
+    const links = document.getElementById("links");
+    menu.addEventListener("click", () => {
+      const open = links.classList.toggle("open");
+      menu.setAttribute("aria-expanded", String(open));
     });
-    const cards = document.querySelectorAll(".card");
-    cards.forEach((card, i) => {
-      gsap.to(card, {opacity:1, y:0, duration:0.9, delay:0.6 + i*0.12, ease:"power2.out"});
-      card.addEventListener("mouseenter", () => gsap.to(card, {duration:0.2, y:-10}));
-      card.addEventListener("mouseleave", () => gsap.to(card, {duration:0.25, y:0}));
+    links.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => links.classList.remove("open")));
+    document.querySelectorAll(".filters button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".filters button").forEach((b) => b.classList.remove("on"));
+        btn.classList.add("on");
+        const kind = btn.dataset.filter;
+        document.querySelectorAll(".piece").forEach((el) => {
+          el.classList.toggle("hide", kind !== "all" && el.dataset.kind !== kind);
+        });
+      });
     });
+    const photo = document.querySelector(".hero-photo img");
+    const stage = document.getElementById("heroPhoto");
+    if (!reduce && photo) {
+      stage.addEventListener("pointermove", (e) => {
+        const r = stage.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        photo.style.animation = "none";
+        photo.style.transform = `rotateY(${x * 18}deg) rotateX(${((e.clientY - r.top) / r.height - 0.5) * -8}deg)`;
+      });
+      stage.addEventListener("pointerleave", () => {
+        photo.style.animation = "";
+        photo.style.transform = "";
+      });
+    }
   </script>
 </body>
 </html>
