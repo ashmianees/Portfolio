@@ -3,208 +3,203 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ashmi Anees — full stack developer and data analyst. Build the app or explain the business. Immediate joiner for remote, hybrid, and on-site work.">
-  <meta name="theme-color" content="#f6f1e8">
-  <title>Ashmi Anees — Developer & Data Analyst</title>
+  <meta name="description" content="Ashmi Anees — I turn data, ideas and digital products into practical solutions. Data analytics, web development, and software testing.">
+  <meta name="theme-color" content="#07080d">
+  <title>Ashmi Anees</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,560;0,9..144,650;1,9..144,520&family=Outfit:wght@370;480;580&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@360;480;580&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <style>
     :root {
-      --paper: #101411;
-      --card: #1a211c;
-      --ink: #f6f1e8;
-      --muted: #b7c2b8;
-      --line: rgba(246,241,232,.14);
-      --green: #d6ff4a;
-      --green-2: #9dffb0;
-      --mint: rgba(214,255,74,.12);
-      --clay: #ffb086;
-      --max: 1080px;
+      --bg: #07080d;
+      --ink: #f4f6fb;
+      --muted: #a7b0c4;
+      --line: rgba(255,255,255,.12);
+      --emerald: #3ee0a2;
+      --violet: #8b7cff;
+      --glass: rgba(16,18,28,.62);
+      --max: 1120px;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { margin: 0; background: var(--paper); color: var(--ink); font-family: Outfit, system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; }
-    .orb { position: fixed; border-radius: 50%; filter: blur(40px); pointer-events: none; z-index: 0; animation: drift 14s ease-in-out infinite; }
-    .orb.one { width: 340px; height: 340px; background: rgba(214,255,74,.16); top: -80px; left: -60px; }
-    .orb.two { width: 280px; height: 280px; background: rgba(255,176,134,.16); right: -40px; top: 30vh; animation-delay: -4s; }
-    @keyframes drift { 50% { transform: translate3d(30px, 40px, 0) scale(1.08); } }
-    header, main, footer { position: relative; z-index: 1; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Outfit, system-ui, sans-serif;
+      background:
+        radial-gradient(900px 500px at 10% -10%, rgba(139,124,255,.28), transparent 55%),
+        radial-gradient(800px 480px at 100% 0%, rgba(62,224,162,.18), transparent 50%),
+        var(--bg);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
     body.locked { overflow: hidden; }
-    img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
-    button { font: inherit; background: none; border: 0; cursor: pointer; color: inherit; }
-    h1, h2, h3 { font-family: Fraunces, Georgia, serif; font-weight: 560; letter-spacing: -0.03em; margin: 0; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+    img { max-width: 100%; display: block; }
+    h1, h2, h3 { font-family: Syne, sans-serif; margin: 0; letter-spacing: -0.04em; }
     p { margin: 0; }
-    .skip { position: absolute; left: 12px; top: -40px; background: var(--green); color: #fff; padding: 8px 12px; z-index: 80; }
+    .skip { position: absolute; left: 12px; top: -40px; background: var(--emerald); color: #062; padding: 8px 12px; z-index: 80; }
     .skip:focus { top: 12px; }
-
+    .glow {
+      position: fixed; width: 420px; height: 420px; border-radius: 50%; pointer-events: none; z-index: 0;
+      background: radial-gradient(circle, rgba(62,224,162,.16), transparent 68%);
+      transform: translate(-50%, -50%);
+    }
     .intro {
-      position: fixed; inset: 0; z-index: 40; perspective: 1400px;
-      display: grid; place-items: center;
-      background: radial-gradient(ellipse at 50% 85%, rgba(20,61,50,.1), transparent 48%), var(--paper);
-      transition: transform .9s cubic-bezier(.76,0,.24,1);
+      position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; perspective: 1200px;
+      background: #07080d; transition: transform .8s cubic-bezier(.76,0,.24,1);
     }
     .intro.leave { transform: translateY(-102%); pointer-events: none; }
-    .intro-stage { text-align: center; transform-style: preserve-3d; }
-    .intro-role { letter-spacing: .16em; text-transform: uppercase; font-size: .78rem; font-weight: 580; color: var(--green-2); opacity: 0; animation: rise .7s .15s ease forwards; }
-    .intro-name { line-height: .9; margin: 8px 0 0; }
-    .intro-name span {
-      display: inline-block; font-size: clamp(64px, 12vw, 124px); opacity: 0;
-      transform: translateZ(-240px) rotateX(28deg) scale(.72);
-      animation: namepop 1s cubic-bezier(.16,1.35,.4,1) forwards;
-    }
-    .intro-name span + span { margin-left: .16em; font-style: italic; color: var(--green-2); animation-delay: .12s; }
-    .intro-photo {
-      width: min(300px, 60vw); margin: -6px auto 0; opacity: 0;
-      transform: translateZ(-180px) scale(.22) rotateY(-24deg);
-      filter: drop-shadow(0 28px 18px rgba(20,36,28,.18));
-      animation: photopop 1.15s .45s cubic-bezier(.16,1.25,.32,1) forwards;
-    }
-    @keyframes rise { to { opacity: 1; } }
-    @keyframes namepop {
-      60% { opacity: 1; transform: translateZ(70px) rotateX(-4deg) scale(1.04); }
-      100% { opacity: 1; transform: translateZ(24px) scale(1); }
-    }
-    @keyframes photopop {
-      0% { opacity: 0; transform: translateZ(-180px) scale(.22) rotateY(-24deg); }
-      68% { opacity: 1; transform: translateZ(110px) scale(1.08) rotateY(8deg); }
-      100% { opacity: 1; transform: translateZ(36px) scale(1); }
-    }
+    .intro-name { font-size: clamp(56px, 10vw, 108px); line-height: .9; text-align: center; }
+    .intro-name span { display: inline-block; opacity: 0; transform: translateY(40px) scale(.86); animation: pop .9s cubic-bezier(.16,1.2,.3,1) forwards; }
+    .intro-name span + span { color: var(--emerald); animation-delay: .12s; margin-left: .2em; }
+    .intro-photo { width: min(260px, 54vw); margin: 8px auto 0; opacity: 0; filter: drop-shadow(0 24px 30px rgba(62,224,162,.25)); animation: photopop 1s .35s cubic-bezier(.16,1.2,.3,1) forwards; }
+    @keyframes pop { to { opacity: 1; transform: none; } }
+    @keyframes photopop { 0% { opacity: 0; transform: translateY(50px) scale(.6); } 100% { opacity: 1; transform: none; } }
 
-    header { position: sticky; top: 0; z-index: 10; background: rgba(16,20,17,.78); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; }
-    header.scrolled { border-bottom-color: var(--line); }
-    nav { max-width: var(--max); margin: 0 auto; padding: 14px 22px; display: flex; align-items: center; justify-content: space-between; }
-    .brand { font-family: Fraunces, serif; font-size: 1.15rem; }
-    .brand em { font-style: italic; color: var(--green-2); }
-    .nav-links { display: flex; gap: 20px; align-items: center; }
+    header { position: sticky; top: 12px; z-index: 20; }
+    nav {
+      max-width: var(--max); margin: 0 auto; padding: 10px 14px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      background: var(--glass); border: 1px solid var(--line); border-radius: 999px;
+      backdrop-filter: blur(16px);
+    }
+    .brand { font-family: Syne, sans-serif; font-weight: 800; padding-left: 8px; }
+    .nav-links { display: flex; gap: 18px; align-items: center; }
     .nav-links a { color: var(--muted); font-size: .95rem; }
-    .nav-links a:hover { color: var(--ink); }
-    .hire { background: var(--green) !important; color: #14200a !important; border-radius: 999px; padding: 8px 14px; }
-    .menu { display: none; border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; }
-    main { max-width: var(--max); margin: 0 auto; padding: 0 22px 64px; }
-
-    .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: end; padding: 36px 0 8px; }
-    .eyebrow { color: var(--clay); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 580; }
-    h1 { font-size: clamp(40px, 5.2vw, 64px); line-height: .96; margin: 10px 0 14px; }
-    h1 em { font-style: italic; color: var(--green-2); }
-    .lede { color: var(--muted); font-size: 1.08rem; max-width: 46ch; }
-    .paths-line { margin-top: 16px; padding: 14px 16px; background: var(--mint); border-radius: 14px; color: var(--green); font-weight: 580; }
-    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
-    .btn { display: inline-flex; align-items: center; min-height: 46px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--ink); font-weight: 580; }
-    .btn.solid { background: var(--green); color: #14200a; border-color: var(--green); }
-    .btn { transition: transform .35s cubic-bezier(.2,1,.3,1), background .25s; }
-    .btn:hover { transform: translateY(-3px) scale(1.03); }
-    .btn:hover { background: var(--clay); border-color: var(--clay); color: #fff; }
-    .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
-    .hero-photo { position: relative; }
-    .hero-photo img { width: min(100%, 380px); margin-left: auto; filter: drop-shadow(0 22px 14px rgba(20,36,28,.16)); animation: floaty 5.5s ease-in-out infinite; }
-    .hero-photo figcaption { position: absolute; left: 0; bottom: 16px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px; }
-    .hero-photo strong { display: block; font-family: Fraunces, serif; }
-    .hero-photo span { color: var(--muted); font-size: .86rem; }
-    @keyframes floaty { 50% { transform: translateY(-8px); } }
-
-    .story { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin: 28px 0 8px; }
-    .story a { display: block; padding: 10px 8px; border-top: 2px solid var(--green); color: var(--muted); font-size: .78rem; }
-    .story a:hover { color: var(--ink); }
-    .story b { display: block; color: var(--green); font-family: Fraunces, serif; font-size: 1rem; }
-
-    section { padding: 56px 0 4px; }
-    .sec-kicker { color: var(--clay); letter-spacing: .14em; text-transform: uppercase; font-size: .75rem; font-weight: 580; }
-    h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1; margin: 6px 0 8px; }
-    .sub { color: var(--muted); max-width: 52ch; }
-
-    .lanes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
-    .lane { border-radius: 22px; padding: 22px; min-height: 220px; }
-    .lane { transition: transform .45s cubic-bezier(.2,1,.3,1); }
-    .lane:hover { transform: translateY(-8px) rotate(-.4deg); }
-    .lane.build { background: var(--green); color: #14200a; }
-    .lane.explain { background: var(--card); border: 1px solid var(--line); }
-    .lane h3 { font-size: 2rem; margin: 10px 0; }
-    .lane p { color: inherit; opacity: .88; }
-    .lane.build p { color: #243016; }
-    .stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-    .stack span { border-radius: 999px; padding: 5px 10px; font-size: .84rem; }
-    .lane.build .stack span { background: rgba(20,32,10,.12); }
-    .lane.explain .stack span { background: var(--mint); color: var(--green); }
-
-    .work { display: grid; gap: 12px; margin-top: 18px; }
-    .piece { display: grid; grid-template-columns: 220px 1fr auto; gap: 16px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 12px; transition: transform .4s cubic-bezier(.2,1,.3,1), border-color .3s; }
-    .piece:hover { border-color: var(--green); transform: translateX(8px); }
-    .piece img { transition: transform .6s cubic-bezier(.2,1,.3,1); }
-    .piece:hover img { transform: scale(1.06); }
-    .piece img, .ph { width: 100%; height: 132px; object-fit: cover; border-radius: 12px; background: #efe4d4; }
-    .ph { display: grid; place-items: center; text-align: center; color: var(--green); font-family: Fraunces, serif; padding: 10px; }
-    .piece h3 { font-size: 1.35rem; margin-bottom: 4px; }
-    .piece p { color: var(--muted); }
-    .go { color: var(--green-2); font-weight: 580; white-space: nowrap; }
-
-    .jobs { margin-top: 18px; display: grid; gap: 0; }
-    .job { display: grid; grid-template-columns: 190px 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--line); }
-    .when { color: var(--green-2); font-weight: 580; }
-    .job h3 { font-size: 1.35rem; }
-    .job .org { color: var(--muted); }
-    .job ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
-
-    .proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 18px; }
-    .panel { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; }
-    .panel h3 { font-size: 1.4rem; margin: 8px 0; }
-    .panel p { color: var(--muted); }
-
-    .marquee { overflow: hidden; border-block: 1px solid var(--line); margin: 28px 0 0; }
-    .marquee-track { display: flex; gap: 28px; width: max-content; animation: ticker 22s linear infinite; font-weight: 580; letter-spacing: .08em; text-transform: uppercase; padding: 12px 0; }
-    .marquee b { color: var(--green); }
-    @keyframes ticker { to { transform: translateX(-50%); } }
-    .contact {
-      margin-top: 18px; background: linear-gradient(160deg, #1d3a28, #243016); color: #f6f1e8; border-radius: 28px; padding: 28px;
-      display: grid; grid-template-columns: 1.3fr .7fr; gap: 18px;
+    .nav-links a:hover { color: #fff; }
+    .pill {
+      background: linear-gradient(90deg, var(--emerald), #7cf0c4); color: #062 !important;
+      border-radius: 999px; padding: 8px 14px; font-weight: 580;
     }
-    .contact .sec-kicker, .contact h2 { color: #f6f1e8; }
-    .mail { display: inline-block; margin-top: 10px; font-family: Fraunces, serif; font-size: clamp(26px, 3.4vw, 40px); line-height: 1.1; }
-    .contact a { color: var(--green); }
-    .contact .list { display: grid; gap: 8px; margin-top: 14px; font-size: 1.05rem; }
-    .contact .panel { background: rgba(255,255,255,.08); border-color: transparent; color: #f6f1e8; }
-    .contact .panel p { color: #d7ebe2; }
-    footer { max-width: var(--max); margin: 0 auto; padding: 18px 22px 28px; display: flex; justify-content: space-between; color: var(--muted); }
+    .menu { display: none; border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; }
+    main { position: relative; z-index: 1; max-width: var(--max); margin: 0 auto; padding: 28px 22px 72px; }
+
+    .hero { min-height: calc(100vh - 120px); display: grid; grid-template-columns: 1.15fr .85fr; gap: 28px; align-items: center; }
+    .avail { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; color: var(--muted); font-size: .86rem; background: rgba(255,255,255,.04); }
+    .avail i { width: 8px; height: 8px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 0 0 rgba(62,224,162,.7); animation: pulse 2s infinite; display: block; }
+    @keyframes pulse { 70% { box-shadow: 0 0 0 8px transparent; } }
+    h1 { font-size: clamp(52px, 7vw, 92px); line-height: .9; margin: 14px 0 12px; }
+    h1 em { font-style: normal; background: linear-gradient(90deg, #fff, var(--emerald)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lede { font-size: clamp(20px, 2.4vw, 28px); max-width: 18ch; line-height: 1.25; }
+    .roles { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; color: var(--muted); }
+    .roles span { border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; background: rgba(255,255,255,.04); }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+    .btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--line); font-weight: 580; transition: transform .3s, background .3s, box-shadow .3s; }
+    .btn.solid { background: #fff; color: #111; border-color: #fff; }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(62,224,162,.2); }
+    .frame {
+      justify-self: end; width: min(100%, 380px); padding: 10px; border-radius: 28px;
+      background: linear-gradient(160deg, rgba(62,224,162,.7), rgba(139,124,255,.45));
+      box-shadow: 0 30px 80px rgba(0,0,0,.35);
+      animation: floaty 6s ease-in-out infinite;
+    }
+    .frame inner, .frame-inner { background: #0c0e14; border-radius: 22px; overflow: hidden; }
+    .frame img { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center top; }
+    @keyframes floaty { 50% { transform: translateY(-10px); } }
+
+    section { padding: 78px 0 10px; }
+    .kicker { color: var(--emerald); letter-spacing: .16em; text-transform: uppercase; font-size: .75rem; font-weight: 580; }
+    h2 { font-size: clamp(34px, 4.5vw, 56px); line-height: .95; margin: 8px 0 12px; }
+    .sub { color: var(--muted); max-width: 46ch; font-size: 1.05rem; }
+
+    .groups { display: grid; gap: 12px; margin-top: 22px; }
+    .group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      padding: 10px 14px; border-radius: 14px; background: rgba(255,255,255,.05);
+      border: 1px solid var(--line); backdrop-filter: blur(8px);
+      animation: bob 4.5s ease-in-out infinite;
+    }
+    .chip:nth-child(2n) { animation-delay: -1s; }
+    .chip:nth-child(3n) { animation-delay: -2s; }
+    @keyframes bob { 50% { transform: translateY(-6px); border-color: rgba(62,224,162,.5); } }
+
+    .projects { display: grid; gap: 16px; margin-top: 22px; }
+    .card {
+      display: grid; grid-template-columns: 1.1fr .9fr; gap: 0; min-height: 280px;
+      border-radius: 28px; overflow: hidden; border: 1px solid var(--line);
+      background: rgba(255,255,255,.04); backdrop-filter: blur(10px);
+      transition: transform .45s cubic-bezier(.2,1,.3,1), border-color .3s, box-shadow .45s;
+    }
+    .card:hover { transform: translateY(-8px) scale(1.015); border-color: rgba(62,224,162,.55); box-shadow: 0 24px 60px rgba(0,0,0,.35); }
+    .card-copy { padding: 26px; display: flex; flex-direction: column; justify-content: center; }
+    .num { color: var(--violet); font-family: Syne, sans-serif; font-weight: 700; }
+    .card h3 { font-size: clamp(28px, 3vw, 40px); margin: 6px 0; }
+    .card p { color: var(--muted); }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+    .tag { font-size: .82rem; padding: 5px 9px; border-radius: 999px; background: rgba(62,224,162,.12); color: var(--emerald); }
+    .go { color: #fff; font-weight: 580; }
+    .card:hover .go { color: var(--emerald); }
+    .media { position: relative; min-height: 220px; overflow: hidden; background: #11131a; }
+    .media img, .ph { width: 100%; height: 100%; object-fit: cover; min-height: 220px; transition: transform .6s cubic-bezier(.2,1,.3,1); }
+    .card:hover .media img { transform: scale(1.08); }
+    .ph { display: grid; place-items: center; text-align: center; padding: 20px; font-family: Syne, sans-serif; font-size: 1.6rem; background: linear-gradient(160deg, #15261f, #1a1430); }
+
+    .timeline { margin-top: 26px; position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: ""; position: absolute; left: 6px; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(var(--emerald), var(--violet)); transform-origin: top; transform: scaleY(0);
+    }
+    .timeline.on::before { transform: scaleY(1); transition: transform 1.2s ease; }
+    .step { position: relative; padding: 0 0 28px 18px; }
+    .step::before { content: ""; position: absolute; left: -26px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--emerald); }
+    .when { color: var(--emerald); font-weight: 580; }
+    .step h3 { font-size: 1.35rem; margin-top: 4px; }
+    .step p { color: var(--muted); }
+
+    .more { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+    .mini { padding: 16px; border-radius: 18px; border: 1px solid var(--line); background: rgba(255,255,255,.03); transition: transform .3s; }
+    .mini:hover { transform: translateY(-4px); }
+    .mini h3 { font-size: 1.15rem; margin-bottom: 6px; }
+    .mini p, .about p { color: var(--muted); }
+
+    .contact {
+      margin-top: 20px; padding: 28px; border-radius: 28px;
+      background: linear-gradient(160deg, rgba(62,224,162,.16), rgba(139,124,255,.16));
+      border: 1px solid var(--line);
+    }
+    .mail { display: inline-block; margin-top: 8px; font-family: Syne, sans-serif; font-size: clamp(26px, 4vw, 42px); }
+    .list { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; }
+    .list a { color: var(--emerald); }
+    footer { position: relative; z-index: 1; max-width: var(--max); margin: 0 auto; padding: 10px 22px 28px; color: var(--muted); display: flex; justify-content: space-between; }
 
     @media (max-width: 860px) {
-      .hero, .lanes, .piece, .job, .proof, .contact, .story { grid-template-columns: 1fr; }
-      .piece { grid-template-columns: 1fr; }
-      .go { white-space: normal; }
-      .hero-photo img { margin: 0 auto; }
+      .hero, .card, .more { grid-template-columns: 1fr; }
+      .frame { justify-self: start; }
       .menu { display: inline-flex; }
-      .nav-links { display: none; position: absolute; left: 16px; right: 16px; top: 62px; flex-direction: column; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+      .nav-links { display: none; position: absolute; left: 12px; right: 12px; top: 64px; flex-direction: column; align-items: flex-start; padding: 14px; border-radius: 18px; background: #12141c; border: 1px solid var(--line); }
       .nav-links.open { display: flex; }
+      header { top: 8px; }
       footer { flex-direction: column; gap: 8px; }
     }
     @media (prefers-reduced-motion: reduce) {
       .intro { display: none; }
-      .intro-name span, .intro-photo, .hero-photo img, .orb, .marquee-track { animation: none; opacity: 1; transform: none; }
+      *, *::before { animation: none !important; transition: none !important; }
     }
   </style>
 </head>
 <body class="locked">
-  <div class="orb one"></div>
-  <div class="orb two"></div>
-  <a class="skip" href="#paths">Skip to content</a>
+  <div class="glow" id="glow"></div>
+  <a class="skip" href="#work">Skip to work</a>
   <div class="intro" id="intro">
-    <div class="intro-stage">
-      <p class="intro-role">Full stack developer · Data analyst</p>
+    <div>
       <h1 class="intro-name"><span>Ashmi</span><span>Anees</span></h1>
       <img class="intro-photo" src="images/ashmi-cutout.png" alt="">
     </div>
   </div>
 
-  <header id="bar">
+  <header>
     <nav>
-      <a class="brand" href="#top">Ashmi <em>Anees</em></a>
+      <a class="brand" href="#top">Ashmi</a>
       <div class="nav-links" id="links">
-        <a href="#paths">Hire paths</a>
-        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#work">Projects</a>
         <a href="#experience">Experience</a>
-        <a class="hire" href="#contact">Contact</a>
+        <a class="pill" href="#contact">Contact Me</a>
       </div>
       <button class="menu" id="menu" aria-expanded="false">Menu</button>
     </nav>
@@ -212,200 +207,140 @@
 
   <main id="top">
     <section class="hero">
-      <div>
-        <p class="eyebrow">Immediate joiner · remote, hybrid, or on-site</p>
-        <h1>Full stack developer <em>and</em> data analyst.</h1>
-        <p class="lede">I build the product and explain the business behind it. Open to the GCC as well as remote, hybrid, and on-site work.</p>
-        <p class="paths-line">Two hire paths: build the app (React, Django, Flask) or explain the business (SQL, Power BI, Tableau).</p>
+      <div class="hero-copy">
+        <p class="avail"><i></i> Available for remote, hybrid, on-site, and GCC</p>
+        <h1>Ashmi <em>Anees</em></h1>
+        <p class="lede">I turn data, ideas & digital products into practical solutions.</p>
+        <div class="roles">
+          <span>QA Engineer</span>
+          <span>Data Analytics</span>
+          <span>Web Development</span>
+        </div>
         <div class="actions">
-          <a class="btn solid" href="#contact">Hire Ashmi</a>
-          <a class="btn" href="#work">See the proof</a>
+          <a class="btn solid" href="#work">View My Work</a>
+          <a class="btn" href="#contact">Contact Me</a>
         </div>
       </div>
-      <figure class="hero-photo">
-        <img src="images/ashmi-cutout.png" alt="Ashmi Anees">
-        <figcaption><strong>Available now</strong><span>Remote · hybrid · on-site · GCC</span></figcaption>
-      </figure>
-    </section>
-
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>React</span><b>Django</b><span>Flask</span><b>SQL</b><span>Power BI</span><b>Tableau</b><span>Python</span><b>Next.js</b>
-        <span>React</span><b>Django</b><span>Flask</span><b>SQL</b><span>Power BI</span><b>Tableau</b><span>Python</span><b>Next.js</b>
+      <div class="frame" id="frame">
+        <div class="frame-inner"><img src="images/ashmi-cutout.png" alt="Ashmi Anees"></div>
       </div>
-    </div>
-
-    <nav class="story" aria-label="On this page">
-      <a href="#who"><b>01</b> Who I am</a>
-      <a href="#paths"><b>02</b> Hire paths</a>
-      <a href="#work"><b>03</b> Live proof</a>
-      <a href="#experience"><b>04</b> Experience</a>
-      <a href="#more"><b>05</b> Beyond the role</a>
-      <a href="#contact"><b>06</b> Contact</a>
-    </nav>
-
-    <section id="who">
-      <p class="sec-kicker">01</p>
-      <h2>Who you would be hiring.</h2>
-      <p class="sub">A full stack developer and data analyst, ready to join now. Remote, hybrid, or on-site. Also open to roles in the GCC.</p>
     </section>
 
-    <section id="paths">
-      <p class="sec-kicker">02</p>
-      <h2>Two hire paths.</h2>
-      <p class="sub">Pick one, or both when the product and the reporting need to stay together.</p>
-      <div class="lanes">
-        <article class="lane build">
-          <p class="eyebrow" style="color:#f3d7c8">Path one</p>
-          <h3>Build the app.</h3>
-          <p>Production websites and full stack features, from the interface through the API and the database.</p>
-          <div class="stack"><span>React</span><span>Django</span><span>Flask</span></div>
-        </article>
-        <article class="lane explain">
-          <p class="eyebrow">Path two</p>
-          <h3>Explain the business.</h3>
-          <p>Clean the data, then show the KPI, the trend, and the decision a manager can make.</p>
-          <div class="stack"><span>SQL</span><span>Power BI</span><span>Tableau</span></div>
-        </article>
+    <section id="about">
+      <p class="kicker">About</p>
+      <h2>I build, test, analyze & improve digital products.</h2>
+      <p class="sub">I'm an MCA graduate with experience across software testing, data analytics, web development, and digital operations. Two ways to hire me: build the app in React, Django, or Flask, or explain the business in SQL, Power BI, and Tableau.</p>
+    </section>
+
+    <section id="skills">
+      <p class="kicker">Skills</p>
+      <h2>What I use on a real task.</h2>
+      <div class="groups">
+        <div class="group"><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Power BI</span><span class="chip">Excel</span><span class="chip">Tableau</span></div>
+        <div class="group"><span class="chip">React</span><span class="chip">Flask</span><span class="chip">Django</span><span class="chip">MySQL</span><span class="chip">Next.js</span></div>
+        <div class="group"><span class="chip">Testing</span><span class="chip">Git</span><span class="chip">REST APIs</span><span class="chip">Agile</span></div>
       </div>
     </section>
 
     <section id="work">
-      <p class="sec-kicker">03</p>
-      <h2>Live proof.</h2>
-      <p class="sub">Sites and dashboards a client can open.</p>
-      <div class="work">
-        <article class="piece">
-          <div class="ph">Alpine Infinity<br>Dubai</div>
-          <div><h3>Alpine Infinity</h3><p>Editorial website for a Dubai trading house: textiles, uniforms, footwear, and leather, with an enquiry path.</p></div>
-          <a class="go" href="https://www.alpinemena.com" target="_blank" rel="noopener">Open site</a>
+      <p class="kicker">Selected work</p>
+      <h2>This person actually builds things.</h2>
+      <div class="projects">
+        <article class="card">
+          <div class="card-copy">
+            <span class="num">01</span>
+            <h3>Alpine Infinity Trading</h3>
+            <p>Business website and digital presence for a Dubai trading house: site, domain, business email, and the public profiles around the brand.</p>
+            <div class="tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">TypeScript</span></div>
+            <a class="go" href="https://www.alpinemena.com" target="_blank" rel="noopener">→ Explore project</a>
+          </div>
+          <div class="media"><div class="ph">Alpine Infinity<br>Dubai</div></div>
         </article>
-        <article class="piece">
-          <img src="images/luxo.png" alt="Luxo Qatar">
-          <div><h3>Luxo Qatar</h3><p>Production app in React, Flask, and MySQL, plus the sales and operations reporting around it.</p></div>
-          <a class="go" href="https://www.luxoqatar.com/" target="_blank" rel="noopener">Open site</a>
+        <article class="card">
+          <div class="card-copy">
+            <span class="num">02</span>
+            <h3>Helpdesk & SLA Analytics</h3>
+            <p>29,000+ tickets turned into SLA compliance, response time, and the bottlenecks that keep repeating.</p>
+            <div class="tags"><span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">Python</span></div>
+            <a class="go" href="https://github.com/ashmianees/DXC_Helpdesk_Analytics" target="_blank" rel="noopener">→ Explore project</a>
+          </div>
+          <div class="media"><img src="images/DXC.png" alt="SLA analytics dashboard"></div>
         </article>
-        <article class="piece">
-          <img src="images/Fishgrid.png" alt="Fish-Grid">
-          <div><h3>Fish-Grid</h3><p>Aquaculture platform with onboarding, pricing, dashboards, and role-based access.</p></div>
-          <a class="go" href="https://github.com/ashmianees/Fishgrid-host" target="_blank" rel="noopener">GitHub</a>
+        <article class="card">
+          <div class="card-copy">
+            <span class="num">03</span>
+            <h3>Retail Sales Analytics</h3>
+            <p>KPI scorecards and sales analysis across products, regions, and customer segments, 2019–2024.</p>
+            <div class="tags"><span class="tag">Tableau</span><span class="tag">SQL</span></div>
+            <a class="go" href="https://public.tableau.com/app/profile/ashmi.anees/viz/EU-NON/RetailSalesAnalysis20192024" target="_blank" rel="noopener">→ Explore project</a>
+          </div>
+          <div class="media"><div class="ph">Retail sales<br>2019–2024</div></div>
         </article>
-        <article class="piece">
-          <img src="images/vitacalls.png" alt="Vita Calls">
-          <div><h3>Vita Calls</h3><p>Diet and nutrition app with recommendations, user data, and a booking flow.</p></div>
-          <a class="go" href="https://github.com/ashmianees/Vitacalls" target="_blank" rel="noopener">GitHub</a>
+        <article class="card">
+          <div class="card-copy">
+            <span class="num">04</span>
+            <h3>Billing & Business Operations</h3>
+            <p>Production system for Luxo International in Qatar: the app, the API, and the weekly operations reporting.</p>
+            <div class="tags"><span class="tag">React</span><span class="tag">Flask</span><span class="tag">MySQL</span></div>
+            <a class="go" href="https://www.luxoqatar.com/" target="_blank" rel="noopener">→ Explore project</a>
+          </div>
+          <div class="media"><img src="images/luxo.png" alt="Luxo Qatar"></div>
         </article>
-        <article class="piece">
-          <img src="images/DXC.png" alt="SLA dashboard">
-          <div><h3>SLA dashboard</h3><p>29,000 support tickets. Compliance, response time, resolution rate, and repeating bottlenecks.</p></div>
-          <a class="go" href="https://github.com/ashmianees/DXC_Helpdesk_Analytics" target="_blank" rel="noopener">GitHub</a>
-        </article>
-        <article class="piece">
-          <img src="images/Airline.png" alt="Airline operations">
-          <div><h3>Airline operations</h3><p>Delays, cancellations, and route performance in Power BI.</p></div>
-          <a class="go" href="https://github.com/ashmianees/airline-operations-analytics" target="_blank" rel="noopener">GitHub</a>
-        </article>
-        <article class="piece">
-          <div class="ph">Retail sales<br>2019–2024</div>
-          <div><h3>Retail sales</h3><p>Tableau story across products, regions, and customer segments.</p></div>
-          <a class="go" href="https://public.tableau.com/app/profile/ashmi.anees/viz/EU-NON/RetailSalesAnalysis20192024" target="_blank" rel="noopener">Tableau</a>
-        </article>
-        <article class="piece">
-          <div class="ph">Textiles<br>KPI</div>
-          <div><h3>Textiles KPI</h3><p>Multi-source business data in automated Power BI scorecards.</p></div>
-          <a class="go" href="https://github.com/ashmianees/Textiles-analysis-using-power-bi" target="_blank" rel="noopener">GitHub</a>
-        </article>
+      </div>
+      <div class="more">
+        <a class="mini" href="https://github.com/ashmianees/Fishgrid-host" target="_blank" rel="noopener"><h3>Fish-Grid</h3><p>Django aquaculture platform with roles, pricing, and dashboards.</p></a>
+        <a class="mini" href="https://github.com/ashmianees/Vitacalls" target="_blank" rel="noopener"><h3>Vita Calls</h3><p>Nutrition app with recommendations and booking.</p></a>
+        <a class="mini" href="https://github.com/ashmianees/airline-operations-analytics" target="_blank" rel="noopener"><h3>Airline operations</h3><p>Delays, cancellations, and route performance.</p></a>
+        <a class="mini" href="https://github.com/ashmianees/Textiles-analysis-using-power-bi" target="_blank" rel="noopener"><h3>Textiles KPI</h3><p>Automated Power BI scorecards from more than one source.</p></a>
       </div>
     </section>
 
     <section id="experience">
-      <p class="sec-kicker">04</p>
-      <h2>Where this was used.</h2>
-      <div class="jobs">
-        <article class="job">
-          <div><p class="when">Jun 2025 – May 2026</p><p>Qatar · remote contract</p></div>
-          <div>
-            <h3>Full stack developer and analyst</h3>
-            <p class="org">Luxo International Trading</p>
-            <ul>
-              <li>Shipped the live app in React, Flask, and MySQL.</li>
-              <li>Reported weekly sales and operations for management.</li>
-            </ul>
-          </div>
+      <p class="kicker">Experience</p>
+      <h2>A timeline, not a CV dump.</h2>
+      <div class="timeline" id="timeline">
+        <article class="step">
+          <p class="when">2025 – 2026</p>
+          <h3>Web developer / analyst</h3>
+          <p>Luxo International Trading · Qatar, remote. React, Flask, MySQL, and weekly KPI reporting.</p>
         </article>
-        <article class="job">
-          <div><p class="when">Dec 2024 – May 2025</p><p>Internship</p></div>
-          <div>
-            <h3>Data analytics intern</h3>
-            <p class="org">Ethqan Technology</p>
-            <ul>
-              <li>Cleaned 10,000+ records in SQL and Python.</li>
-              <li>Cut manual reporting effort by 30% with Power BI.</li>
-            </ul>
-          </div>
+        <article class="step">
+          <p class="when">2025</p>
+          <h3>Data analytics intern</h3>
+          <p>Ethqan Technology. 10,000+ records cleaned. Manual reporting cut by 30%.</p>
         </article>
-        <article class="job">
-          <div><p class="when">Sep 2024</p><p>Internship</p></div>
-          <div>
-            <h3>Full stack developer intern</h3>
-            <p class="org">Nezuware</p>
-            <ul><li>Django, JavaScript, and MySQL features. Query retrieval improved by about 20%.</li></ul>
-          </div>
+        <article class="step">
+          <p class="when">2024</p>
+          <h3>Full stack developer intern</h3>
+          <p>Nezuware. Django, JavaScript, MySQL. Query retrieval improved by about 20%.</p>
         </article>
-        <article class="job">
-          <div><p class="when">May 2023</p><p>Internship</p></div>
-          <div>
-            <h3>Python Django intern</h3>
-            <p class="org">CTS InfoTech</p>
-            <ul><li>Backend modules, API work, and database integration.</li></ul>
-          </div>
+        <article class="step">
+          <p class="when">2023</p>
+          <h3>Python Django intern</h3>
+          <p>CTS InfoTech. Backend modules, APIs, and database integration.</p>
         </article>
       </div>
-    </section>
-
-    <section id="more">
-      <p class="sec-kicker">05</p>
-      <h2>Beyond the job title.</h2>
-      <div class="proof">
-        <article class="panel">
-          <p class="eyebrow">Patent</p>
-          <h3>202441077216</h3>
-          <p>Co-inventor of an automated ear and eye drop dispenser.</p>
-        </article>
-        <article class="panel">
-          <p class="eyebrow">Research</p>
-          <h3>NCECA 2025</h3>
-          <p>Machine learning for fish-disease detection, published at NCECA 2025.</p>
-        </article>
-        <article class="panel">
-          <p class="eyebrow">Founder</p>
-          <h3>Drip Drop</h3>
-          <p>Healthcare dispensing prototype funded by Kerala Startup Mission.</p>
-        </article>
+      <div class="more">
+        <article class="mini"><h3>Patent 202441077216</h3><p>Co-inventor of an automated ear and eye drop dispenser.</p></article>
+        <article class="mini"><h3>NCECA 2025</h3><p>Fish-disease detection research. Drip Drop, funded by Kerala Startup Mission.</p></article>
       </div>
     </section>
 
     <section id="contact">
       <div class="contact">
-        <div>
-          <p class="sec-kicker">06</p>
-          <h2>Write, or call.</h2>
-          <a class="mail" href="mailto:ashmianees12@gmail.com">ashmianees12@gmail.com</a>
-          <div class="list">
-            <a href="tel:+918921492135">+91 89214 92135</a>
-            <a href="https://www.linkedin.com/in/ashmianees" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://github.com/ashmianees" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-        <div class="panel">
-          <h3>A short brief is enough.</h3>
-          <p>Say whether you need the app, the analysis, or both, and when you need a first version.</p>
+        <p class="kicker">Contact</p>
+        <h2>If the role is open, write.</h2>
+        <a class="mail" href="mailto:ashmianees12@gmail.com">ashmianees12@gmail.com</a>
+        <div class="list">
+          <a href="tel:+918921492135">+91 89214 92135</a>
+          <a href="https://www.linkedin.com/in/ashmianees" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/ashmianees" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </section>
   </main>
   <footer>
-    <span>Ashmi Anees · Developer and data analyst</span>
+    <span>Ashmi Anees · Data, products, and the work between them.</span>
     <a href="#top">Back to top</a>
   </footer>
   <script>
@@ -415,10 +350,9 @@
     else setTimeout(() => {
       intro.classList.add("leave");
       document.body.classList.remove("locked");
-      setTimeout(() => intro.remove(), 950);
-    }, 2600);
-    const bar = document.getElementById("bar");
-    addEventListener("scroll", () => bar.classList.toggle("scrolled", scrollY > 8), { passive: true });
+      setTimeout(() => intro.remove(), 900);
+    }, 2200);
+
     const menu = document.getElementById("menu");
     const links = document.getElementById("links");
     menu.addEventListener("click", () => {
@@ -427,25 +361,33 @@
     });
     links.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => links.classList.remove("open")));
 
-    const photo = document.querySelector(".hero-photo img");
-    if (!reduce && photo) {
-      const stage = photo.parentElement;
-      stage.addEventListener("pointermove", (e) => {
-        const r = stage.getBoundingClientRect();
+    const glow = document.getElementById("glow");
+    if (!reduce) {
+      addEventListener("pointermove", (e) => {
+        glow.style.left = e.clientX + "px";
+        glow.style.top = e.clientY + "px";
+      });
+      const frame = document.getElementById("frame");
+      frame.addEventListener("pointermove", (e) => {
+        const r = frame.getBoundingClientRect();
         const x = (e.clientX - r.left) / r.width - 0.5;
         const y = (e.clientY - r.top) / r.height - 0.5;
-        photo.style.animation = "none";
-        photo.style.transform = `rotateY(${x * 22}deg) rotateX(${y * -12}deg) translateY(-6px)`;
+        frame.style.animation = "none";
+        frame.style.transform = `rotateY(${x * 14}deg) rotateX(${y * -10}deg)`;
       });
-      stage.addEventListener("pointerleave", () => { photo.style.animation = ""; photo.style.transform = ""; });
+      frame.addEventListener("pointerleave", () => { frame.style.animation = ""; frame.style.transform = ""; });
     }
+
+    const line = document.getElementById("timeline");
+    const watch = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { if (entry.isIntersecting) line.classList.add("on"); });
+    }, { threshold: 0.3 });
+    watch.observe(line);
+
     if (!reduce && window.gsap && window.ScrollTrigger) {
       gsap.registerPlugin(ScrollTrigger);
-      gsap.utils.toArray("section, .piece, .job, .panel, .lane").forEach((el) => {
-        gsap.from(el, {
-          scrollTrigger: { trigger: el, start: "top 88%" },
-          y: 36, opacity: 0, duration: 0.7, ease: "power2.out"
-        });
+      gsap.utils.toArray(".card, .step, .mini, .group").forEach((el) => {
+        gsap.from(el, { scrollTrigger: { trigger: el, start: "top 86%" }, y: 40, opacity: 0, duration: 0.7, ease: "power2.out" });
       });
     }
   </script>
