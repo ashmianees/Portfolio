@@ -135,9 +135,17 @@
     .work .reveal:nth-child(6) { animation-delay: .2s; }
     .work .reveal:nth-child(7) { animation-delay: .28s; }
     .work .reveal:nth-child(8) { animation-delay: .36s; }
-    .reveal { opacity: 0; transform: translateY(22px); animation: rise .9s ease forwards; }
-    .reveal:nth-child(2) { animation-delay: .08s; }
-    .reveal:nth-child(3) { animation-delay: .16s; }
+    .reveal { opacity: 0; }
+    .reveal.from-left { transform: translateX(-48px); }
+    .reveal.from-right { transform: translateX(48px); }
+    .reveal.show { animation: slidein .9s cubic-bezier(.16,1,.3,1) forwards; }
+    @keyframes slidein { to { opacity: 1; transform: none; } }
+    .media { clip-path: inset(0 0 100% 0); }
+    .piece.show .media { animation: wipe .9s .15s cubic-bezier(.16,1,.3,1) forwards; }
+    @keyframes wipe { to { clip-path: inset(0 0 0 0); } }
+    .marquee { overflow: hidden; border-block: 1px solid var(--line); margin-top: 28px; }
+    .marquee-track { display: flex; gap: 32px; width: max-content; padding: 14px 0; animation: ticker 28s linear infinite; letter-spacing: .18em; text-transform: uppercase; font-size: .78rem; color: var(--gold); }
+    @keyframes ticker { to { transform: translateX(-50%); } }
 
     .jobs { border-top: 1px solid var(--line); }
     .job { display: grid; grid-template-columns: 180px 1fr; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); }
@@ -168,7 +176,8 @@
     }
     @media (prefers-reduced-motion: reduce) {
       .intro { display: none; }
-      .reveal, .intro h1 span, .intro img, .portrait img { animation: none; opacity: 1; transform: none; }
+      .reveal, .intro h1 span, .intro img, .portrait img, .marquee-track { animation: none !important; opacity: 1; transform: none; }
+      .media { clip-path: none; }
     }
   </style>
 </head>
@@ -213,11 +222,12 @@
       </figure>
     </section>
     <div class="metrics">
-      <div class="metric"><strong>29k+</strong><span>Support tickets analyzed</span></div>
-      <div class="metric"><strong>10k+</strong><span>Records cleaned in SQL and Python</span></div>
-      <div class="metric"><strong>30%</strong><span>Less manual reporting at Ethqan</span></div>
+      <div class="metric"><strong data-count="29" data-suffix="k+">0</strong><span>Support tickets analyzed</span></div>
+      <div class="metric"><strong data-count="10" data-suffix="k+">0</strong><span>Records cleaned in SQL and Python</span></div>
+      <div class="metric"><strong data-count="30" data-suffix="%">0</strong><span>Less manual reporting at Ethqan</span></div>
       <div class="metric"><strong>MCA</strong><span>Dual degree · CGPA 7.29</span></div>
     </div>
+    <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>React</span><span>Django</span><span>Flask</span><span>SQL</span><span>Power BI</span><span>Tableau</span><span>Alpine Infinity</span><span>Luxo Qatar</span><span>React</span><span>Django</span><span>Flask</span><span>SQL</span><span>Power BI</span><span>Tableau</span><span>Alpine Infinity</span><span>Luxo Qatar</span></div></div>
 
     <section id="practice">
       <div class="head">
@@ -225,12 +235,12 @@
         <p class="note">Hire the analyst, the developer, or both when the product and the numbers need to stay together.</p>
       </div>
       <div class="lanes">
-        <article class="lane dark reveal">
+        <article class="lane dark reveal from-left">
           <p class="eyebrow" style="color:#d7c4a4">Explain the business</p>
           <h3>Data analyst</h3>
           <p>SQL, Python, Power BI, Tableau, and Excel. I clean the data, build the KPI view, and write the finding a manager can use. At Luxo I reported sales and operations. At Ethqan I cut manual reporting by 30%.</p>
         </article>
-        <article class="lane reveal">
+        <article class="lane reveal from-right">
           <p class="eyebrow">Build the product</p>
           <h3>Full stack developer</h3>
           <p>React, Django, Flask, PHP, and REST APIs on MySQL or PostgreSQL. Luxo Qatar is live. Alpine Infinity is a Dubai trading-house site with a real enquiry path.</p>
@@ -364,12 +374,34 @@
       menu.setAttribute("aria-expanded", String(open));
     });
     links.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => links.classList.remove("open")));
+    document.querySelectorAll(".work .piece").forEach((el, i) => el.classList.add(i % 2 ? "from-right" : "from-left", "reveal"));
+    document.querySelectorAll(".job").forEach((el, i) => el.classList.add(i % 2 ? "from-right" : "from-left"));
+    document.querySelectorAll(".panel").forEach((el, i) => el.classList.add(i % 2 ? "from-right" : "from-left"));
     const seen = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => { if (entry.isIntersecting) entry.target.style.animationPlayState = "running"; });
-    }, { threshold: 0.2 });
-    document.querySelectorAll(".reveal").forEach((el) => {
-      el.style.animationPlayState = "paused";
-      seen.observe(el);
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("show");
+        seen.unobserve(entry.target);
+      });
+    }, { threshold: 0.25 });
+    document.querySelectorAll(".reveal").forEach((el) => seen.observe(el));
+    document.querySelectorAll("[data-count]").forEach((el) => {
+      const run = () => {
+        const target = Number(el.dataset.count);
+        const suffix = el.dataset.suffix || "";
+        if (reduce) { el.textContent = target + suffix; return; }
+        const start = performance.now();
+        const step = (now) => {
+          const t = Math.min(1, (now - start) / 900);
+          el.textContent = Math.round(target * (1 - Math.pow(1 - t, 3))) + suffix;
+          if (t < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+      const watch = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) { run(); watch.disconnect(); }
+      }, { threshold: 0.6 });
+      watch.observe(el);
     });
   </script>
 </body>
