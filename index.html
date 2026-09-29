@@ -112,20 +112,29 @@
     .lane.dark { background: var(--forest); color: #f6f1e8; border-color: var(--forest); }
     .lane.dark p { color: #d5e4dc; }
 
-    .work { display: grid; gap: 14px; }
+    .work { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .piece {
-      display: grid; grid-template-columns: 92px 1.2fr .9fr auto; gap: 18px; align-items: center;
-      padding: 14px; border-radius: 22px; border: 1px solid transparent; background: transparent;
-      transition: background .4s, border-color .4s, transform .45s;
+      display: flex; flex-direction: column; overflow: hidden;
+      border-radius: 24px; border: 1px solid var(--line); background: var(--card);
+      transition: transform .55s cubic-bezier(.16,1,.3,1), box-shadow .55s;
     }
-    .piece:hover { background: var(--card); border-color: var(--line); transform: translateY(-4px); }
-    .idx { font-family: "Cormorant Garamond", serif; font-size: 1.8rem; color: var(--gold); }
-    .piece h3 { font-size: 2rem; }
-    .shot, .ph { width: 100%; height: 120px; object-fit: cover; border-radius: 14px; background: #e7dfd2; overflow: hidden; }
-    .ph { display: grid; place-items: center; text-align: center; color: var(--forest); font-family: "Cormorant Garamond", serif; font-size: 1.35rem; }
-    .shot { transition: transform .7s ease; }
-    .piece:hover .shot { transform: scale(1.04); }
-    .go { color: var(--forest); font-weight: 560; white-space: nowrap; }
+    .piece:hover { transform: translateY(-12px); box-shadow: 0 28px 50px rgba(28,25,21,.1); }
+    .media { position: relative; height: 220px; overflow: hidden; background: #e7dfd2; }
+    .idx { position: absolute; left: 14px; top: 14px; z-index: 1; background: rgba(243,239,230,.92); border-radius: 999px; padding: 4px 10px; font-family: "Cormorant Garamond", serif; color: var(--gold); }
+    .piece h3 { font-size: 1.8rem; margin-bottom: 6px; }
+    .piece .copy { padding: 16px 18px 18px; }
+    .shot, .ph { width: 100%; height: 220px; object-fit: cover; border-radius: 0; background: #e7dfd2; }
+    .ph { display: grid; place-items: center; text-align: center; color: var(--forest); font-family: "Cormorant Garamond", serif; font-size: 1.6rem; }
+    .shot { transition: transform .8s cubic-bezier(.16,1,.3,1); }
+    .piece:hover .shot { transform: scale(1.08); }
+    .go { display: inline-block; margin-top: 10px; color: var(--forest); font-weight: 560; }
+    .work .reveal:nth-child(2) { animation-delay: .12s; }
+    .work .reveal:nth-child(3) { animation-delay: .2s; }
+    .work .reveal:nth-child(4) { animation-delay: .28s; }
+    .work .reveal:nth-child(5) { animation-delay: .12s; }
+    .work .reveal:nth-child(6) { animation-delay: .2s; }
+    .work .reveal:nth-child(7) { animation-delay: .28s; }
+    .work .reveal:nth-child(8) { animation-delay: .36s; }
     .reveal { opacity: 0; transform: translateY(22px); animation: rise .9s ease forwards; }
     .reveal:nth-child(2) { animation-delay: .08s; }
     .reveal:nth-child(3) { animation-delay: .16s; }
@@ -148,7 +157,7 @@
     @media (max-width: 860px) {
       .hero, .lanes, .piece, .job, .proof, .contact, .metrics, .intro-card { grid-template-columns: 1fr; }
       .intro-frame img { height: 46vh; }
-      .piece { grid-template-columns: 1fr; }
+      .work { grid-template-columns: 1fr; }
       .metric + .metric { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); }
       .portrait img { margin: 0 auto; }
       .portrait figcaption { text-align: left; }
@@ -233,57 +242,41 @@
       <div class="head">
         <div>
           <p class="eyebrow">Selected work</p>
-          <h2>Proof, quietly shown.</h2>
+          <h2>Work, side by side.</h2>
         </div>
       </div>
       <div class="work">
         <a class="piece reveal" href="https://www.alpinemena.com" target="_blank" rel="noopener">
-          <span class="idx">01</span>
-          <div><h3>Alpine Infinity</h3><p>Editorial site for a Dubai trading house. Textiles, uniforms, footwear, leather, and an enquiry path.</p></div>
-          <div class="ph">Dubai</div>
-          <span class="go">Visit</span>
+          <div class="media"><span class="idx">01</span><div class="ph">Alpine · Dubai</div></div>
+          <div class="copy"><h3>Alpine Infinity</h3><p>Editorial site for a Dubai trading house, with an enquiry path.</p><span class="go">Visit</span></div>
         </a>
         <a class="piece reveal" href="https://www.luxoqatar.com/" target="_blank" rel="noopener">
-          <span class="idx">02</span>
-          <div><h3>Luxo International</h3><p>Production app for a Qatar trading company. React, Flask, MySQL, REST APIs, and Zoho email. Weekly KPI reporting beside it.</p></div>
-          <img class="shot" src="images/luxo.png" alt="Luxo Qatar">
-          <span class="go">Visit</span>
+          <div class="media"><span class="idx">02</span><img class="shot" src="images/luxo.png" alt="Luxo Qatar"></div>
+          <div class="copy"><h3>Luxo International</h3><p>Live app for a Qatar trading company. React, Flask, MySQL, and weekly reporting.</p><span class="go">Visit</span></div>
         </a>
         <a class="piece reveal" href="https://github.com/ashmianees/DXC_Helpdesk_Analytics" target="_blank" rel="noopener">
-          <span class="idx">03</span>
-          <div><h3>Helpdesk & SLA</h3><p>29,000+ tickets. Compliance, response time, resolution rate, and repeating bottlenecks.</p></div>
-          <img class="shot" src="images/DXC.png" alt="SLA dashboard">
-          <span class="go">GitHub</span>
+          <div class="media"><span class="idx">03</span><img class="shot" src="images/DXC.png" alt="SLA dashboard"></div>
+          <div class="copy"><h3>Helpdesk & SLA</h3><p>29,000+ tickets. Compliance, response time, and the bottlenecks that repeat.</p><span class="go">GitHub</span></div>
         </a>
         <a class="piece reveal" href="https://public.tableau.com/app/profile/ashmi.anees/viz/EU-NON/RetailSalesAnalysis20192024" target="_blank" rel="noopener">
-          <span class="idx">04</span>
-          <div><h3>Retail sales</h3><p>Tableau story, 2019–2024. Products, regions, customer segments, and KPI scorecards.</p></div>
-          <div class="ph">Tableau</div>
-          <span class="go">Open</span>
+          <div class="media"><span class="idx">04</span><div class="ph">Tableau</div></div>
+          <div class="copy"><h3>Retail sales</h3><p>2019–2024. Products, regions, customer segments, and KPI scorecards.</p><span class="go">Open</span></div>
         </a>
         <a class="piece reveal" href="https://github.com/ashmianees/airline-operations-analytics" target="_blank" rel="noopener">
-          <span class="idx">05</span>
-          <div><h3>Airline operations</h3><p>Delays, cancellations, and route performance in Power BI.</p></div>
-          <img class="shot" src="images/Airline.png" alt="Airline dashboard">
-          <span class="go">GitHub</span>
+          <div class="media"><span class="idx">05</span><img class="shot" src="images/Airline.png" alt="Airline dashboard"></div>
+          <div class="copy"><h3>Airline operations</h3><p>Delays, cancellations, and route performance in Power BI.</p><span class="go">GitHub</span></div>
         </a>
         <a class="piece reveal" href="https://github.com/ashmianees/Textiles-analysis-using-power-bi" target="_blank" rel="noopener">
-          <span class="idx">06</span>
-          <div><h3>Textiles KPI</h3><p>Multi-source business data in automated Power BI dashboards.</p></div>
-          <div class="ph">Power BI</div>
-          <span class="go">GitHub</span>
+          <div class="media"><span class="idx">06</span><div class="ph">Power BI</div></div>
+          <div class="copy"><h3>Textiles KPI</h3><p>Multi-source business data in automated dashboards.</p><span class="go">GitHub</span></div>
         </a>
         <a class="piece reveal" href="https://github.com/ashmianees/Fishgrid-host" target="_blank" rel="noopener">
-          <span class="idx">07</span>
-          <div><h3>Fish-Grid</h3><p>Aquaculture platform. Django, MariaDB, role-based access. Related research published at NCECA 2025.</p></div>
-          <img class="shot" src="images/Fishgrid.png" alt="Fish-Grid">
-          <span class="go">GitHub</span>
+          <div class="media"><span class="idx">07</span><img class="shot" src="images/Fishgrid.png" alt="Fish-Grid"></div>
+          <div class="copy"><h3>Fish-Grid</h3><p>Aquaculture platform with roles and dashboards. Research at NCECA 2025.</p><span class="go">GitHub</span></div>
         </a>
         <a class="piece reveal" href="https://github.com/ashmianees/Vitacalls" target="_blank" rel="noopener">
-          <span class="idx">08</span>
-          <div><h3>Vita Calls</h3><p>Diet and nutrition application. PHP, MySQL, and a booking flow.</p></div>
-          <img class="shot" src="images/vitacalls.png" alt="Vita Calls">
-          <span class="go">GitHub</span>
+          <div class="media"><span class="idx">08</span><img class="shot" src="images/vitacalls.png" alt="Vita Calls"></div>
+          <div class="copy"><h3>Vita Calls</h3><p>Diet and nutrition app with recommendations and booking.</p><span class="go">GitHub</span></div>
         </a>
       </div>
     </section>
