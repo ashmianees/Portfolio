@@ -3,344 +3,343 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ashmi Anees — I turn data, ideas and digital products into practical solutions. Data analytics, web development, and software testing.">
-  <meta name="theme-color" content="#07080d">
+  <meta name="description" content="Ashmi Anees — data analyst and full stack developer. SQL, Power BI, Tableau, React, Django, and Flask. Immediate joiner.">
+  <meta name="theme-color" content="#f3efe6">
   <title>Ashmi Anees</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@360;480;580&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Outfit:wght@340;460;560&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #07080d;
-      --ink: #f4f6fb;
-      --muted: #a7b0c4;
-      --line: rgba(255,255,255,.12);
-      --emerald: #3ee0a2;
-      --violet: #8b7cff;
-      --glass: rgba(16,18,28,.62);
-      --max: 1120px;
+      --ivory: #f3efe6;
+      --card: #faf7f2;
+      --ink: #1c1915;
+      --muted: #6d675f;
+      --line: #e3d9cc;
+      --gold: #8d6840;
+      --forest: #1c3d34;
+      --max: 1140px;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
+      background: var(--ivory);
       color: var(--ink);
       font-family: Outfit, system-ui, sans-serif;
-      background:
-        radial-gradient(900px 500px at 10% -10%, rgba(139,124,255,.28), transparent 55%),
-        radial-gradient(800px 480px at 100% 0%, rgba(62,224,162,.18), transparent 50%),
-        var(--bg);
-      line-height: 1.6;
-      overflow-x: hidden;
+      font-weight: 340;
+      line-height: 1.65;
     }
     body.locked { overflow: hidden; }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
     img { max-width: 100%; display: block; }
-    h1, h2, h3 { font-family: Syne, sans-serif; margin: 0; letter-spacing: -0.04em; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; background: none; border: 0; color: inherit; cursor: pointer; }
+    h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500; letter-spacing: -0.03em; margin: 0; }
     p { margin: 0; }
-    .skip { position: absolute; left: 12px; top: -40px; background: var(--emerald); color: #062; padding: 8px 12px; z-index: 80; }
+    .skip { position: absolute; left: 12px; top: -40px; background: var(--forest); color: #fff; padding: 8px 12px; z-index: 80; }
     .skip:focus { top: 12px; }
-    .glow {
-      position: fixed; width: 420px; height: 420px; border-radius: 50%; pointer-events: none; z-index: 0;
-      background: radial-gradient(circle, rgba(62,224,162,.16), transparent 68%);
-      transform: translate(-50%, -50%);
+    .bar {
+      position: fixed; top: 0; left: 0; height: 2px; width: 100%; background: var(--gold);
+      transform: scaleX(0); transform-origin: left; z-index: 40;
     }
     .intro {
-      position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; perspective: 1200px;
-      background: #07080d; transition: transform .8s cubic-bezier(.76,0,.24,1);
+      position: fixed; inset: 0; z-index: 50; background: var(--ivory);
+      display: grid; place-items: center; text-align: center;
+      transition: transform 1s cubic-bezier(.76,0,.24,1);
     }
-    .intro.leave { transform: translateY(-102%); pointer-events: none; }
-    .intro-name { font-size: clamp(56px, 10vw, 108px); line-height: .9; text-align: center; }
-    .intro-name span { display: inline-block; opacity: 0; transform: translateY(40px) scale(.86); animation: pop .9s cubic-bezier(.16,1.2,.3,1) forwards; }
-    .intro-name span + span { color: var(--emerald); animation-delay: .12s; margin-left: .2em; }
-    .intro-photo { width: min(260px, 54vw); margin: 8px auto 0; opacity: 0; filter: drop-shadow(0 24px 30px rgba(62,224,162,.25)); animation: photopop 1s .35s cubic-bezier(.16,1.2,.3,1) forwards; }
-    @keyframes pop { to { opacity: 1; transform: none; } }
-    @keyframes photopop { 0% { opacity: 0; transform: translateY(50px) scale(.6); } 100% { opacity: 1; transform: none; } }
+    .intro.leave { transform: translateY(-101%); pointer-events: none; }
+    .intro p { letter-spacing: .28em; text-transform: uppercase; font-size: .72rem; color: var(--gold); opacity: 0; animation: rise .8s .1s ease forwards; }
+    .intro h1 { font-size: clamp(64px, 12vw, 128px); line-height: .9; font-weight: 500; }
+    .intro h1 span { display: inline-block; opacity: 0; transform: translateY(24px); animation: rise 1s .25s cubic-bezier(.16,1,.3,1) forwards; }
+    .intro h1 span + span { font-style: italic; color: var(--forest); animation-delay: .4s; margin-left: .15em; }
+    .intro img { width: min(240px, 46vw); margin: 10px auto 0; opacity: 0; transform: translateY(30px) scale(.94); filter: drop-shadow(0 18px 16px rgba(28,25,21,.12)); animation: rise 1.1s .7s cubic-bezier(.16,1,.3,1) forwards; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
 
-    header { position: sticky; top: 12px; z-index: 20; }
-    nav {
-      max-width: var(--max); margin: 0 auto; padding: 10px 14px;
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
-      background: var(--glass); border: 1px solid var(--line); border-radius: 999px;
-      backdrop-filter: blur(16px);
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(243,239,230,.88); backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
     }
-    .brand { font-family: Syne, sans-serif; font-weight: 800; padding-left: 8px; }
-    .nav-links { display: flex; gap: 18px; align-items: center; }
-    .nav-links a { color: var(--muted); font-size: .95rem; }
-    .nav-links a:hover { color: #fff; }
-    .pill {
-      background: linear-gradient(90deg, var(--emerald), #7cf0c4); color: #062 !important;
-      border-radius: 999px; padding: 8px 14px; font-weight: 580;
+    header.on { border-bottom-color: var(--line); }
+    nav { max-width: var(--max); margin: 0 auto; padding: 18px 28px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-family: "Cormorant Garamond", serif; font-size: 1.35rem; }
+    .brand em { font-style: italic; color: var(--forest); }
+    .nav-links { display: flex; gap: 26px; align-items: center; }
+    .nav-links a { color: var(--muted); font-size: .92rem; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links .now { color: var(--ivory); background: var(--forest); border-radius: 999px; padding: 9px 16px; }
+    .menu { display: none; border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; }
+    main { max-width: var(--max); margin: 0 auto; padding: 0 28px 80px; }
+
+    .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: end; padding: 54px 0 20px; }
+    .eyebrow { color: var(--gold); letter-spacing: .22em; text-transform: uppercase; font-size: .72rem; font-weight: 560; }
+    h1 { font-size: clamp(58px, 7vw, 104px); line-height: .88; margin: 14px 0 18px; }
+    h1 em { font-style: italic; color: var(--forest); }
+    .lede { font-size: 1.2rem; max-width: 36ch; color: var(--muted); }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .btn {
+      display: inline-flex; align-items: center; min-height: 48px; padding: 0 20px; border-radius: 999px;
+      border: 1px solid var(--ink); transition: background .35s, color .35s, transform .35s;
     }
-    .menu { display: none; border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; }
-    main { position: relative; z-index: 1; max-width: var(--max); margin: 0 auto; padding: 28px 22px 72px; }
-
-    .hero { min-height: calc(100vh - 120px); display: grid; grid-template-columns: 1.15fr .85fr; gap: 28px; align-items: center; }
-    .avail { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; color: var(--muted); font-size: .86rem; background: rgba(255,255,255,.04); }
-    .avail i { width: 8px; height: 8px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 0 0 rgba(62,224,162,.7); animation: pulse 2s infinite; display: block; }
-    @keyframes pulse { 70% { box-shadow: 0 0 0 8px transparent; } }
-    h1 { font-size: clamp(52px, 7vw, 92px); line-height: .9; margin: 14px 0 12px; }
-    h1 em { font-style: normal; background: linear-gradient(90deg, #fff, var(--emerald)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .lede { font-size: clamp(20px, 2.4vw, 28px); max-width: 18ch; line-height: 1.25; }
-    .roles { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; color: var(--muted); }
-    .roles span { border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; background: rgba(255,255,255,.04); }
-    .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
-    .btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--line); font-weight: 580; transition: transform .3s, background .3s, box-shadow .3s; }
-    .btn.solid { background: #fff; color: #111; border-color: #fff; }
-    .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(62,224,162,.2); }
-    .frame {
-      justify-self: end; width: min(100%, 380px); padding: 10px; border-radius: 28px;
-      background: linear-gradient(160deg, rgba(62,224,162,.7), rgba(139,124,255,.45));
-      box-shadow: 0 30px 80px rgba(0,0,0,.35);
-      animation: floaty 6s ease-in-out infinite;
+    .btn.solid { background: var(--ink); color: var(--ivory); }
+    .btn:hover { background: var(--forest); color: #fff; border-color: var(--forest); transform: translateY(-2px); }
+    .portrait { position: relative; }
+    .portrait img {
+      width: min(100%, 420px); margin-left: auto; aspect-ratio: 4/5; object-fit: cover; object-position: center top;
+      border-radius: 180px 180px 24px 24px;
+      animation: drift 7s ease-in-out infinite;
     }
-    .frame inner, .frame-inner { background: #0c0e14; border-radius: 22px; overflow: hidden; }
-    .frame img { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center top; }
-    @keyframes floaty { 50% { transform: translateY(-10px); } }
+    .portrait figcaption { margin-top: 14px; text-align: right; color: var(--muted); font-size: .9rem; }
+    @keyframes drift { 50% { transform: translateY(-8px); } }
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 36px; }
+    .metric { padding: 22px 18px 22px 0; }
+    .metric + .metric { border-left: 1px solid var(--line); padding-left: 18px; }
+    .metric strong { display: block; font-family: "Cormorant Garamond", serif; font-size: 2.4rem; font-weight: 500; }
+    .metric span { color: var(--muted); font-size: .9rem; }
 
-    section { padding: 78px 0 10px; }
-    .kicker { color: var(--emerald); letter-spacing: .16em; text-transform: uppercase; font-size: .75rem; font-weight: 580; }
-    h2 { font-size: clamp(34px, 4.5vw, 56px); line-height: .95; margin: 8px 0 12px; }
-    .sub { color: var(--muted); max-width: 46ch; font-size: 1.05rem; }
+    section { padding: 88px 0 0; }
+    .head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 28px; }
+    h2 { font-size: clamp(40px, 5vw, 68px); line-height: .95; }
+    .note { color: var(--muted); max-width: 32ch; }
+    .lanes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .lane { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 28px; min-height: 240px; transition: transform .45s ease, box-shadow .45s; }
+    .lane:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(28,25,21,.06); }
+    .lane h3 { font-size: 2.4rem; margin: 10px 0; }
+    .lane p, .piece p, .job p, .panel p { color: var(--muted); }
+    .lane.dark { background: var(--forest); color: #f6f1e8; border-color: var(--forest); }
+    .lane.dark p { color: #d5e4dc; }
 
-    .groups { display: grid; gap: 12px; margin-top: 22px; }
-    .group { display: flex; flex-wrap: wrap; gap: 8px; }
-    .chip {
-      padding: 10px 14px; border-radius: 14px; background: rgba(255,255,255,.05);
-      border: 1px solid var(--line); backdrop-filter: blur(8px);
-      animation: bob 4.5s ease-in-out infinite;
+    .work { display: grid; gap: 14px; }
+    .piece {
+      display: grid; grid-template-columns: 92px 1.2fr .9fr auto; gap: 18px; align-items: center;
+      padding: 14px; border-radius: 22px; border: 1px solid transparent; background: transparent;
+      transition: background .4s, border-color .4s, transform .45s;
     }
-    .chip:nth-child(2n) { animation-delay: -1s; }
-    .chip:nth-child(3n) { animation-delay: -2s; }
-    @keyframes bob { 50% { transform: translateY(-6px); border-color: rgba(62,224,162,.5); } }
+    .piece:hover { background: var(--card); border-color: var(--line); transform: translateY(-4px); }
+    .idx { font-family: "Cormorant Garamond", serif; font-size: 1.8rem; color: var(--gold); }
+    .piece h3 { font-size: 2rem; }
+    .shot, .ph { width: 100%; height: 120px; object-fit: cover; border-radius: 14px; background: #e7dfd2; overflow: hidden; }
+    .ph { display: grid; place-items: center; text-align: center; color: var(--forest); font-family: "Cormorant Garamond", serif; font-size: 1.35rem; }
+    .shot { transition: transform .7s ease; }
+    .piece:hover .shot { transform: scale(1.04); }
+    .go { color: var(--forest); font-weight: 560; white-space: nowrap; }
+    .reveal { opacity: 0; transform: translateY(22px); animation: rise .9s ease forwards; }
+    .reveal:nth-child(2) { animation-delay: .08s; }
+    .reveal:nth-child(3) { animation-delay: .16s; }
 
-    .projects { display: grid; gap: 16px; margin-top: 22px; }
-    .card {
-      display: grid; grid-template-columns: 1.1fr .9fr; gap: 0; min-height: 280px;
-      border-radius: 28px; overflow: hidden; border: 1px solid var(--line);
-      background: rgba(255,255,255,.04); backdrop-filter: blur(10px);
-      transition: transform .45s cubic-bezier(.2,1,.3,1), border-color .3s, box-shadow .45s;
-    }
-    .card:hover { transform: translateY(-8px) scale(1.015); border-color: rgba(62,224,162,.55); box-shadow: 0 24px 60px rgba(0,0,0,.35); }
-    .card-copy { padding: 26px; display: flex; flex-direction: column; justify-content: center; }
-    .num { color: var(--violet); font-family: Syne, sans-serif; font-weight: 700; }
-    .card h3 { font-size: clamp(28px, 3vw, 40px); margin: 6px 0; }
-    .card p { color: var(--muted); }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
-    .tag { font-size: .82rem; padding: 5px 9px; border-radius: 999px; background: rgba(62,224,162,.12); color: var(--emerald); }
-    .go { color: #fff; font-weight: 580; }
-    .card:hover .go { color: var(--emerald); }
-    .media { position: relative; min-height: 220px; overflow: hidden; background: #11131a; }
-    .media img, .ph { width: 100%; height: 100%; object-fit: cover; min-height: 220px; transition: transform .6s cubic-bezier(.2,1,.3,1); }
-    .card:hover .media img { transform: scale(1.08); }
-    .ph { display: grid; place-items: center; text-align: center; padding: 20px; font-family: Syne, sans-serif; font-size: 1.6rem; background: linear-gradient(160deg, #15261f, #1a1430); }
-
-    .timeline { margin-top: 26px; position: relative; padding-left: 28px; }
-    .timeline::before {
-      content: ""; position: absolute; left: 6px; top: 0; bottom: 0; width: 2px;
-      background: linear-gradient(var(--emerald), var(--violet)); transform-origin: top; transform: scaleY(0);
-    }
-    .timeline.on::before { transform: scaleY(1); transition: transform 1.2s ease; }
-    .step { position: relative; padding: 0 0 28px 18px; }
-    .step::before { content: ""; position: absolute; left: -26px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--emerald); }
-    .when { color: var(--emerald); font-weight: 580; }
-    .step h3 { font-size: 1.35rem; margin-top: 4px; }
-    .step p { color: var(--muted); }
-
-    .more { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
-    .mini { padding: 16px; border-radius: 18px; border: 1px solid var(--line); background: rgba(255,255,255,.03); transition: transform .3s; }
-    .mini:hover { transform: translateY(-4px); }
-    .mini h3 { font-size: 1.15rem; margin-bottom: 6px; }
-    .mini p, .about p { color: var(--muted); }
-
-    .contact {
-      margin-top: 20px; padding: 28px; border-radius: 28px;
-      background: linear-gradient(160deg, rgba(62,224,162,.16), rgba(139,124,255,.16));
-      border: 1px solid var(--line);
-    }
-    .mail { display: inline-block; margin-top: 8px; font-family: Syne, sans-serif; font-size: clamp(26px, 4vw, 42px); }
-    .list { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; }
-    .list a { color: var(--emerald); }
-    footer { position: relative; z-index: 1; max-width: var(--max); margin: 0 auto; padding: 10px 22px 28px; color: var(--muted); display: flex; justify-content: space-between; }
-
+    .jobs { border-top: 1px solid var(--line); }
+    .job { display: grid; grid-template-columns: 180px 1fr; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .when { color: var(--gold); font-weight: 560; }
+    .job h3 { font-size: 1.7rem; }
+    .proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .panel { padding: 22px; border-radius: 20px; border: 1px solid var(--line); background: var(--card); }
+    .panel h3 { font-size: 1.7rem; margin: 8px 0; }
+    .skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .chip { border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; background: #fff; }
+    .contact { display: grid; grid-template-columns: 1.4fr .6fr; gap: 20px; align-items: end; }
+    .mail { font-family: "Cormorant Garamond", serif; font-size: clamp(32px, 4vw, 52px); line-height: 1; display: inline-block; margin-top: 8px; }
+    .mail:hover { color: var(--forest); }
+    .list { display: grid; gap: 6px; margin-top: 16px; }
+    .list a { color: var(--forest); }
+    footer { max-width: var(--max); margin: 36px auto 0; padding: 18px 28px 32px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; color: var(--muted); }
     @media (max-width: 860px) {
-      .hero, .card, .more { grid-template-columns: 1fr; }
-      .frame { justify-self: start; }
+      .hero, .lanes, .piece, .job, .proof, .contact, .metrics { grid-template-columns: 1fr; }
+      .piece { grid-template-columns: 1fr; }
+      .metric + .metric { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); }
+      .portrait img { margin: 0 auto; }
+      .portrait figcaption { text-align: left; }
       .menu { display: inline-flex; }
-      .nav-links { display: none; position: absolute; left: 12px; right: 12px; top: 64px; flex-direction: column; align-items: flex-start; padding: 14px; border-radius: 18px; background: #12141c; border: 1px solid var(--line); }
+      .nav-links { display: none; position: absolute; left: 16px; right: 16px; top: 68px; flex-direction: column; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
       .nav-links.open { display: flex; }
-      header { top: 8px; }
-      footer { flex-direction: column; gap: 8px; }
+      .head, footer { flex-direction: column; align-items: flex-start; gap: 8px; }
     }
     @media (prefers-reduced-motion: reduce) {
       .intro { display: none; }
-      *, *::before { animation: none !important; transition: none !important; }
+      .reveal, .intro h1 span, .intro img, .portrait img { animation: none; opacity: 1; transform: none; }
     }
   </style>
 </head>
 <body class="locked">
-  <div class="glow" id="glow"></div>
+  <div class="bar" id="bar"></div>
   <a class="skip" href="#work">Skip to work</a>
   <div class="intro" id="intro">
     <div>
-      <h1 class="intro-name"><span>Ashmi</span><span>Anees</span></h1>
-      <img class="intro-photo" src="images/ashmi-cutout.png" alt="">
+      <p>Data analyst · Full stack developer</p>
+      <h1><span>Ashmi</span><span>Anees</span></h1>
+      <img src="images/ashmi-cutout.png" alt="">
     </div>
   </div>
-
-  <header>
+  <header id="topbar">
     <nav>
-      <a class="brand" href="#top">Ashmi</a>
+      <a class="brand" href="#top">Ashmi <em>Anees</em></a>
       <div class="nav-links" id="links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#work">Projects</a>
+        <a href="#practice">Practice</a>
+        <a href="#work">Work</a>
         <a href="#experience">Experience</a>
-        <a class="pill" href="#contact">Contact Me</a>
+        <a class="now" href="#contact">Start a conversation</a>
       </div>
       <button class="menu" id="menu" aria-expanded="false">Menu</button>
     </nav>
   </header>
-
   <main id="top">
     <section class="hero">
-      <div class="hero-copy">
-        <p class="avail"><i></i> Available for remote, hybrid, on-site, and GCC</p>
+      <div>
+        <p class="eyebrow">Immediate joiner · GCC · remote · hybrid · on-site</p>
         <h1>Ashmi <em>Anees</em></h1>
-        <p class="lede">I turn data, ideas & digital products into practical solutions.</p>
-        <div class="roles">
-          <span>QA Engineer</span>
-          <span>Data Analytics</span>
-          <span>Web Development</span>
-        </div>
+        <p class="lede">I turn business data into decisions, and I ship the product around them. MCA graduate. Analyst in SQL, Power BI, and Tableau. Developer in React, Django, and Flask.</p>
         <div class="actions">
-          <a class="btn solid" href="#work">View My Work</a>
-          <a class="btn" href="#contact">Contact Me</a>
+          <a class="btn solid" href="#work">View the work</a>
+          <a class="btn" href="#contact">Contact</a>
         </div>
       </div>
-      <div class="frame" id="frame">
-        <div class="frame-inner"><img src="images/ashmi-cutout.png" alt="Ashmi Anees"></div>
+      <figure class="portrait">
+        <img src="images/ashmi-cutout.png" alt="Ashmi Anees">
+        <figcaption>Available now</figcaption>
+      </figure>
+    </section>
+    <div class="metrics">
+      <div class="metric"><strong>29k+</strong><span>Support tickets analyzed</span></div>
+      <div class="metric"><strong>10k+</strong><span>Records cleaned in SQL and Python</span></div>
+      <div class="metric"><strong>30%</strong><span>Less manual reporting at Ethqan</span></div>
+      <div class="metric"><strong>MCA</strong><span>Dual degree · CGPA 7.29</span></div>
+    </div>
+
+    <section id="practice">
+      <div class="head">
+        <h2>Two practices.<br>One person.</h2>
+        <p class="note">Hire the analyst, the developer, or both when the product and the numbers need to stay together.</p>
       </div>
-    </section>
-
-    <section id="about">
-      <p class="kicker">About</p>
-      <h2>I build, test, analyze & improve digital products.</h2>
-      <p class="sub">I'm an MCA graduate with experience across software testing, data analytics, web development, and digital operations. Two ways to hire me: build the app in React, Django, or Flask, or explain the business in SQL, Power BI, and Tableau.</p>
-    </section>
-
-    <section id="skills">
-      <p class="kicker">Skills</p>
-      <h2>What I use on a real task.</h2>
-      <div class="groups">
-        <div class="group"><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Power BI</span><span class="chip">Excel</span><span class="chip">Tableau</span></div>
-        <div class="group"><span class="chip">React</span><span class="chip">Flask</span><span class="chip">Django</span><span class="chip">MySQL</span><span class="chip">Next.js</span></div>
-        <div class="group"><span class="chip">Testing</span><span class="chip">Git</span><span class="chip">REST APIs</span><span class="chip">Agile</span></div>
+      <div class="lanes">
+        <article class="lane dark reveal">
+          <p class="eyebrow" style="color:#d7c4a4">Explain the business</p>
+          <h3>Data analyst</h3>
+          <p>SQL, Python, Power BI, Tableau, and Excel. I clean the data, build the KPI view, and write the finding a manager can use. At Luxo I reported sales and operations. At Ethqan I cut manual reporting by 30%.</p>
+        </article>
+        <article class="lane reveal">
+          <p class="eyebrow">Build the product</p>
+          <h3>Full stack developer</h3>
+          <p>React, Django, Flask, PHP, and REST APIs on MySQL or PostgreSQL. Luxo Qatar is live. Alpine Infinity is a Dubai trading-house site with a real enquiry path.</p>
+        </article>
       </div>
     </section>
 
     <section id="work">
-      <p class="kicker">Selected work</p>
-      <h2>This person actually builds things.</h2>
-      <div class="projects">
-        <article class="card">
-          <div class="card-copy">
-            <span class="num">01</span>
-            <h3>Alpine Infinity Trading</h3>
-            <p>Business website and digital presence for a Dubai trading house: site, domain, business email, and the public profiles around the brand.</p>
-            <div class="tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">TypeScript</span></div>
-            <a class="go" href="https://www.alpinemena.com" target="_blank" rel="noopener">→ Explore project</a>
-          </div>
-          <div class="media"><div class="ph">Alpine Infinity<br>Dubai</div></div>
-        </article>
-        <article class="card">
-          <div class="card-copy">
-            <span class="num">02</span>
-            <h3>Helpdesk & SLA Analytics</h3>
-            <p>29,000+ tickets turned into SLA compliance, response time, and the bottlenecks that keep repeating.</p>
-            <div class="tags"><span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">Python</span></div>
-            <a class="go" href="https://github.com/ashmianees/DXC_Helpdesk_Analytics" target="_blank" rel="noopener">→ Explore project</a>
-          </div>
-          <div class="media"><img src="images/DXC.png" alt="SLA analytics dashboard"></div>
-        </article>
-        <article class="card">
-          <div class="card-copy">
-            <span class="num">03</span>
-            <h3>Retail Sales Analytics</h3>
-            <p>KPI scorecards and sales analysis across products, regions, and customer segments, 2019–2024.</p>
-            <div class="tags"><span class="tag">Tableau</span><span class="tag">SQL</span></div>
-            <a class="go" href="https://public.tableau.com/app/profile/ashmi.anees/viz/EU-NON/RetailSalesAnalysis20192024" target="_blank" rel="noopener">→ Explore project</a>
-          </div>
-          <div class="media"><div class="ph">Retail sales<br>2019–2024</div></div>
-        </article>
-        <article class="card">
-          <div class="card-copy">
-            <span class="num">04</span>
-            <h3>Billing & Business Operations</h3>
-            <p>Production system for Luxo International in Qatar: the app, the API, and the weekly operations reporting.</p>
-            <div class="tags"><span class="tag">React</span><span class="tag">Flask</span><span class="tag">MySQL</span></div>
-            <a class="go" href="https://www.luxoqatar.com/" target="_blank" rel="noopener">→ Explore project</a>
-          </div>
-          <div class="media"><img src="images/luxo.png" alt="Luxo Qatar"></div>
-        </article>
+      <div class="head">
+        <div>
+          <p class="eyebrow">Selected work</p>
+          <h2>Proof, quietly shown.</h2>
+        </div>
       </div>
-      <div class="more">
-        <a class="mini" href="https://github.com/ashmianees/Fishgrid-host" target="_blank" rel="noopener"><h3>Fish-Grid</h3><p>Django aquaculture platform with roles, pricing, and dashboards.</p></a>
-        <a class="mini" href="https://github.com/ashmianees/Vitacalls" target="_blank" rel="noopener"><h3>Vita Calls</h3><p>Nutrition app with recommendations and booking.</p></a>
-        <a class="mini" href="https://github.com/ashmianees/airline-operations-analytics" target="_blank" rel="noopener"><h3>Airline operations</h3><p>Delays, cancellations, and route performance.</p></a>
-        <a class="mini" href="https://github.com/ashmianees/Textiles-analysis-using-power-bi" target="_blank" rel="noopener"><h3>Textiles KPI</h3><p>Automated Power BI scorecards from more than one source.</p></a>
+      <div class="work">
+        <a class="piece reveal" href="https://www.alpinemena.com" target="_blank" rel="noopener">
+          <span class="idx">01</span>
+          <div><h3>Alpine Infinity</h3><p>Editorial site for a Dubai trading house. Textiles, uniforms, footwear, leather, and an enquiry path.</p></div>
+          <div class="ph">Dubai</div>
+          <span class="go">Visit</span>
+        </a>
+        <a class="piece reveal" href="https://www.luxoqatar.com/" target="_blank" rel="noopener">
+          <span class="idx">02</span>
+          <div><h3>Luxo International</h3><p>Production app for a Qatar trading company. React, Flask, MySQL, REST APIs, and Zoho email. Weekly KPI reporting beside it.</p></div>
+          <img class="shot" src="images/luxo.png" alt="Luxo Qatar">
+          <span class="go">Visit</span>
+        </a>
+        <a class="piece reveal" href="https://github.com/ashmianees/DXC_Helpdesk_Analytics" target="_blank" rel="noopener">
+          <span class="idx">03</span>
+          <div><h3>Helpdesk & SLA</h3><p>29,000+ tickets. Compliance, response time, resolution rate, and repeating bottlenecks.</p></div>
+          <img class="shot" src="images/DXC.png" alt="SLA dashboard">
+          <span class="go">GitHub</span>
+        </a>
+        <a class="piece reveal" href="https://public.tableau.com/app/profile/ashmi.anees/viz/EU-NON/RetailSalesAnalysis20192024" target="_blank" rel="noopener">
+          <span class="idx">04</span>
+          <div><h3>Retail sales</h3><p>Tableau story, 2019–2024. Products, regions, customer segments, and KPI scorecards.</p></div>
+          <div class="ph">Tableau</div>
+          <span class="go">Open</span>
+        </a>
+        <a class="piece reveal" href="https://github.com/ashmianees/airline-operations-analytics" target="_blank" rel="noopener">
+          <span class="idx">05</span>
+          <div><h3>Airline operations</h3><p>Delays, cancellations, and route performance in Power BI.</p></div>
+          <img class="shot" src="images/Airline.png" alt="Airline dashboard">
+          <span class="go">GitHub</span>
+        </a>
+        <a class="piece reveal" href="https://github.com/ashmianees/Textiles-analysis-using-power-bi" target="_blank" rel="noopener">
+          <span class="idx">06</span>
+          <div><h3>Textiles KPI</h3><p>Multi-source business data in automated Power BI dashboards.</p></div>
+          <div class="ph">Power BI</div>
+          <span class="go">GitHub</span>
+        </a>
+        <a class="piece reveal" href="https://github.com/ashmianees/Fishgrid-host" target="_blank" rel="noopener">
+          <span class="idx">07</span>
+          <div><h3>Fish-Grid</h3><p>Aquaculture platform. Django, MariaDB, role-based access. Related research published at NCECA 2025.</p></div>
+          <img class="shot" src="images/Fishgrid.png" alt="Fish-Grid">
+          <span class="go">GitHub</span>
+        </a>
+        <a class="piece reveal" href="https://github.com/ashmianees/Vitacalls" target="_blank" rel="noopener">
+          <span class="idx">08</span>
+          <div><h3>Vita Calls</h3><p>Diet and nutrition application. PHP, MySQL, and a booking flow.</p></div>
+          <img class="shot" src="images/vitacalls.png" alt="Vita Calls">
+          <span class="go">GitHub</span>
+        </a>
       </div>
     </section>
 
     <section id="experience">
-      <p class="kicker">Experience</p>
-      <h2>A timeline, not a CV dump.</h2>
-      <div class="timeline" id="timeline">
-        <article class="step">
-          <p class="when">2025 – 2026</p>
-          <h3>Web developer / analyst</h3>
-          <p>Luxo International Trading · Qatar, remote. React, Flask, MySQL, and weekly KPI reporting.</p>
+      <div class="head"><h2>Experience</h2></div>
+      <div class="jobs">
+        <article class="job reveal">
+          <div><p class="when">2025 – 2026</p><p>Qatar · remote</p></div>
+          <div><h3>Full stack developer & digital operations analyst</h3><p>Luxo International Trading. Live React, Flask, and MySQL application, plus weekly sales and operations reports.</p></div>
         </article>
-        <article class="step">
-          <p class="when">2025</p>
-          <h3>Data analytics intern</h3>
-          <p>Ethqan Technology. 10,000+ records cleaned. Manual reporting cut by 30%.</p>
+        <article class="job reveal">
+          <div><p class="when">2024 – 2025</p><p>Internship</p></div>
+          <div><h3>Data analytics intern</h3><p>Ethqan Technology. 10,000+ records in SQL and Python. Power BI dashboards. Manual effort reduced by 30%.</p></div>
         </article>
-        <article class="step">
-          <p class="when">2024</p>
-          <h3>Full stack developer intern</h3>
-          <p>Nezuware. Django, JavaScript, MySQL. Query retrieval improved by about 20%.</p>
+        <article class="job reveal">
+          <div><p class="when">2024</p><p>One month</p></div>
+          <div><h3>Full stack developer intern</h3><p>Nezuware. Django, JavaScript, Bootstrap, MySQL. Retrieval improved by about 20%.</p></div>
         </article>
-        <article class="step">
-          <p class="when">2023</p>
-          <h3>Python Django intern</h3>
-          <p>CTS InfoTech. Backend modules, APIs, and database integration.</p>
+        <article class="job reveal">
+          <div><p class="when">2023</p><p>Short internship</p></div>
+          <div><h3>Python Django intern</h3><p>CTS InfoTech. Backend modules, APIs, and database integration.</p></div>
         </article>
       </div>
-      <div class="more">
-        <article class="mini"><h3>Patent 202441077216</h3><p>Co-inventor of an automated ear and eye drop dispenser.</p></article>
-        <article class="mini"><h3>NCECA 2025</h3><p>Fish-disease detection research. Drip Drop, funded by Kerala Startup Mission.</p></article>
+    </section>
+
+    <section id="about">
+      <div class="head"><h2>Beyond the title</h2></div>
+      <div class="proof">
+        <article class="panel reveal"><p class="eyebrow">Patent</p><h3>202441077216</h3><p>Co-inventor of an automated ear and eye drop dispenser.</p></article>
+        <article class="panel reveal"><p class="eyebrow">Research</p><h3>NCECA 2025</h3><p>Machine learning for fish-disease detection, published at NCECA 2025.</p></article>
+        <article class="panel reveal"><p class="eyebrow">Founder</p><h3>Drip Drop</h3><p>Healthcare dispensing prototype funded by Kerala Startup Mission.</p></article>
+      </div>
+      <div class="panel reveal" style="margin-top:14px">
+        <h3>Education & tools</h3>
+        <p>MCA, dual degree. Amal Jyothi College of Engineering, APJ Abdul Kalam Technological University. November 2020 – May 2025. CGPA 7.29.</p>
+        <div class="skills">
+          <span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Tableau</span><span class="chip">Python</span><span class="chip">Excel</span>
+          <span class="chip">React</span><span class="chip">Django</span><span class="chip">Flask</span><span class="chip">MySQL</span><span class="chip">PostgreSQL</span>
+          <span class="chip">REST APIs</span><span class="chip">Git</span><span class="chip">Docker</span>
+        </div>
       </div>
     </section>
 
     <section id="contact">
       <div class="contact">
-        <p class="kicker">Contact</p>
-        <h2>If the role is open, write.</h2>
-        <a class="mail" href="mailto:ashmianees12@gmail.com">ashmianees12@gmail.com</a>
-        <div class="list">
-          <a href="tel:+918921492135">+91 89214 92135</a>
-          <a href="https://www.linkedin.com/in/ashmianees" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com/ashmianees" target="_blank" rel="noopener">GitHub</a>
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Write directly.</h2>
+          <a class="mail" href="mailto:ashmianees12@gmail.com">ashmianees12@gmail.com</a>
+          <div class="list">
+            <a href="tel:+918921492135">+91 89214 92135</a>
+            <a href="https://www.linkedin.com/in/ashmianees" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/ashmianees" target="_blank" rel="noopener">GitHub</a>
+          </div>
         </div>
+        <p class="note">Data analyst, reporting analyst, business analyst, or full stack developer. A short brief is enough.</p>
       </div>
     </section>
   </main>
   <footer>
-    <span>Ashmi Anees · Data, products, and the work between them.</span>
+    <span>Ashmi Anees</span>
     <a href="#top">Back to top</a>
   </footer>
   <script>
@@ -350,9 +349,15 @@
     else setTimeout(() => {
       intro.classList.add("leave");
       document.body.classList.remove("locked");
-      setTimeout(() => intro.remove(), 900);
-    }, 2200);
-
+      setTimeout(() => intro.remove(), 1000);
+    }, 2400);
+    const progress = document.getElementById("bar");
+    const topbar = document.getElementById("topbar");
+    addEventListener("scroll", () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      progress.style.transform = `scaleX(${max ? scrollY / max : 0})`;
+      topbar.classList.toggle("on", scrollY > 8);
+    }, { passive: true });
     const menu = document.getElementById("menu");
     const links = document.getElementById("links");
     menu.addEventListener("click", () => {
@@ -360,36 +365,13 @@
       menu.setAttribute("aria-expanded", String(open));
     });
     links.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => links.classList.remove("open")));
-
-    const glow = document.getElementById("glow");
-    if (!reduce) {
-      addEventListener("pointermove", (e) => {
-        glow.style.left = e.clientX + "px";
-        glow.style.top = e.clientY + "px";
-      });
-      const frame = document.getElementById("frame");
-      frame.addEventListener("pointermove", (e) => {
-        const r = frame.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width - 0.5;
-        const y = (e.clientY - r.top) / r.height - 0.5;
-        frame.style.animation = "none";
-        frame.style.transform = `rotateY(${x * 14}deg) rotateX(${y * -10}deg)`;
-      });
-      frame.addEventListener("pointerleave", () => { frame.style.animation = ""; frame.style.transform = ""; });
-    }
-
-    const line = document.getElementById("timeline");
-    const watch = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => { if (entry.isIntersecting) line.classList.add("on"); });
-    }, { threshold: 0.3 });
-    watch.observe(line);
-
-    if (!reduce && window.gsap && window.ScrollTrigger) {
-      gsap.registerPlugin(ScrollTrigger);
-      gsap.utils.toArray(".card, .step, .mini, .group").forEach((el) => {
-        gsap.from(el, { scrollTrigger: { trigger: el, start: "top 86%" }, y: 40, opacity: 0, duration: 0.7, ease: "power2.out" });
-      });
-    }
+    const seen = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { if (entry.isIntersecting) entry.target.style.animationPlayState = "running"; });
+    }, { threshold: 0.2 });
+    document.querySelectorAll(".reveal").forEach((el) => {
+      el.style.animationPlayState = "paused";
+      seen.observe(el);
+    });
   </script>
 </body>
 </html>
