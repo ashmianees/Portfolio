@@ -34,6 +34,10 @@
         var(--bg);
     }
     body.locked { overflow: hidden; }
+    .grain {
+      position: fixed; inset: -20%; z-index: 4; pointer-events: none; opacity: .22;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.55'/></svg>");
+    }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
     button { font: inherit; background: none; border: 0; color: inherit; cursor: pointer; }
@@ -109,7 +113,11 @@
     }
     header.on { border-bottom-color: var(--line); }
     nav { max-width: var(--max); margin: 0 auto; padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; }
-    .brand { font-size: 1.2rem; }
+    .brand { font-size: 1.2rem; display: inline-flex; align-items: center; gap: 8px; }
+    .brand::before {
+      content: ""; width: 8px; height: 8px; border-radius: 50%; background: #3ddc97;
+      box-shadow: 0 0 0 5px rgba(61, 220, 151, .16);
+    }
     .brand em { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; color: var(--sand); }
     .nav-links { display: flex; gap: 26px; align-items: center; }
     .nav-links a { color: var(--muted); font-size: .92rem; }
@@ -119,7 +127,8 @@
     main { position: relative; z-index: 1; max-width: var(--max); margin: 0 auto; padding: 0 28px 88px; }
 
     .hero { display: grid; grid-template-columns: 1.12fr .88fr; gap: 48px; align-items: center; padding: 64px 0 12px; min-height: calc(100vh - 120px); }
-    .eyebrow { color: var(--coral); letter-spacing: .22em; text-transform: uppercase; font-size: .72rem; font-weight: 560; }
+    .eyebrow { color: var(--coral); letter-spacing: .22em; text-transform: uppercase; font-size: .72rem; font-weight: 560; display: flex; align-items: center; gap: 10px; }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--coral); }
     h1 { font-size: clamp(64px, 8vw, 112px); line-height: .86; margin: 12px 0 18px; font-weight: 800; }
     h1 em, .mail em { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; color: var(--sand); }
     .lede { font-size: 1.22rem; max-width: 34ch; color: var(--muted); }
@@ -145,7 +154,14 @@
       width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 18%;
       border-radius: 28px; display: block;
       box-shadow: 0 30px 70px rgba(0, 0, 0, .45);
+      outline: 1px solid rgba(246, 243, 238, .18); outline-offset: -10px;
     }
+    .corners { position: absolute; inset: 14px; pointer-events: none; z-index: 3; }
+    .corners i { position: absolute; width: 26px; height: 26px; border: 1.5px solid var(--sand); }
+    .corners i:nth-child(1) { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+    .corners i:nth-child(2) { top: 0; right: 0; border-left: 0; border-bottom: 0; }
+    .corners i:nth-child(3) { bottom: 0; left: 0; border-right: 0; border-top: 0; }
+    .corners i:nth-child(4) { bottom: 0; right: 0; border-left: 0; border-top: 0; }
     .portrait::before {
       content: ""; position: absolute; inset: 22px -18px -18px 26px; border-radius: 28px; z-index: -1;
       background: linear-gradient(160deg, rgba(255, 106, 69, .7), rgba(240, 194, 174, .15));
@@ -171,7 +187,8 @@
     .marquee { overflow: hidden; margin-top: 36px; border-block: 1px solid var(--line); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
     .marquee-track { display: flex; width: max-content; padding: 18px 0; animation: ticker 38s linear infinite; font-size: clamp(1.4rem, 2.4vw, 2rem); color: var(--sand); }
     .marquee-track span { padding-right: 18px; }
-    .marquee-track span::after { content: "·"; color: var(--coral); padding-left: 18px; }
+    .marquee-track span:nth-child(odd) { color: transparent; -webkit-text-stroke: 1px rgba(240, 194, 174, .9); }
+    .marquee-track span::after { content: "·"; color: var(--coral); -webkit-text-stroke: 0; padding-left: 18px; }
     @keyframes ticker { to { transform: translateX(-50%); } }
 
     section { padding: 92px 0 0; }
@@ -192,6 +209,7 @@
     .lane.dark { background: linear-gradient(165deg, #ff7d5c, #e85a38); color: #1a0e0a; border-color: transparent; }
     .lane.dark p, .lane.dark .eyebrow { color: #3a2018; }
     .lane.dark .eyebrow { color: #3a2018; }
+    .lane.dark .eyebrow::before { background: #3a2018; }
 
     .work { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .piece {
@@ -200,6 +218,11 @@
       transform-style: preserve-3d;
       transition: transform .2s linear, box-shadow .45s;
     }
+    .piece::before, .lane::before, .panel::before {
+      content: ""; position: absolute; left: 22px; right: 22px; top: 0; height: 1px; z-index: 2;
+      background: linear-gradient(90deg, transparent, rgba(255, 106, 69, .85), transparent);
+    }
+    .lane, .panel { position: relative; }
     .piece:hover, .lane:hover { box-shadow: 0 24px 50px rgba(0, 0, 0, .35), 16px 20px 0 rgba(255, 106, 69, .12); }
     .media { position: relative; height: 250px; overflow: hidden; background: #101018; }
     .num { color: var(--sand); font-size: .8rem; letter-spacing: .16em; margin-bottom: 8px; font-weight: 700; }
@@ -207,12 +230,24 @@
     .piece .copy { padding: 18px 20px 20px; }
     .shot, .ph { width: 100%; height: 250px; object-fit: cover; background: #101018; }
     .ph {
-      display: grid; place-items: center; text-align: center; color: var(--sand);
-      font-family: "Instrument Serif", serif; font-size: 2rem; font-style: italic;
+      display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end;
+      gap: 2px; padding: 22px; text-align: left; color: var(--ink);
       background:
-        radial-gradient(400px 180px at 50% 120%, rgba(255, 106, 69, .35), transparent 70%),
-        #12121a;
+        radial-gradient(420px 180px at 80% 120%, rgba(255, 106, 69, .4), transparent 60%),
+        linear-gradient(160deg, #1c1c26, #101018);
     }
+    .ph .ph-kicker { letter-spacing: .2em; text-transform: uppercase; font-size: .68rem; color: var(--coral); margin-bottom: auto; }
+    .ph strong { font-family: Syne, sans-serif; font-weight: 800; font-size: 2.3rem; letter-spacing: -.04em; line-height: 1; }
+    .ph em { font-family: "Instrument Serif", serif; font-style: italic; font-size: 1.7rem; color: var(--sand); }
+    .bars { display: flex; align-items: flex-end; gap: 7px; height: 64px; margin: 14px 0 8px; }
+    .bars i { width: 12px; border-radius: 4px 4px 0 0; background: linear-gradient(#f0c2ae, #ff6a45); display: block; }
+    .bars i:nth-child(1) { height: 38%; } .bars i:nth-child(2) { height: 70%; }
+    .bars i:nth-child(3) { height: 48%; } .bars i:nth-child(4) { height: 92%; }
+    .bars i:nth-child(5) { height: 60%; }
+    .ph.power { background: radial-gradient(380px 160px at 10% 0%, rgba(240, 194, 174, .2), transparent 55%), #12121a; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .tags span { font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; border: 1px solid var(--line); border-radius: 999px; padding: 4px 8px; color: var(--sand); }
+    .lane.dark .tags span { color: #3a2018; border-color: rgba(26, 14, 10, .25); }
     .shot { transition: transform .8s cubic-bezier(.16, 1, .3, 1); }
     .piece:hover .shot { transform: scale(1.06) translateZ(20px); }
     .go { display: inline-block; margin-top: 12px; color: var(--sand); font-weight: 560; }
@@ -235,18 +270,28 @@
 
     .jobs { border-top: 1px solid var(--line); }
     .job { display: grid; grid-template-columns: 180px 1fr; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--line); }
-    .when { color: var(--coral); font-weight: 560; }
+    .when { color: var(--sand); font-family: "Instrument Serif", serif; font-style: italic; font-size: 1.35rem; font-weight: 400; }
     .job h3 { font-size: 1.55rem; }
     .proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     .panel { padding: 22px; border-radius: 22px; border: 1px solid var(--line); background: var(--card); }
     .panel h3 { font-size: 1.55rem; margin: 8px 0; }
     .skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
     .chip { border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; background: rgba(255,255,255,.04); color: var(--ink); }
-    .contact { display: grid; grid-template-columns: 1.4fr .6fr; gap: 24px; align-items: end; }
+    .contact {
+      display: grid; grid-template-columns: 1.4fr .6fr; gap: 24px; align-items: end;
+      padding: 36px; border-radius: 28px; border: 1px solid var(--line); position: relative; overflow: hidden;
+      background: radial-gradient(520px 220px at 0% 100%, rgba(255, 106, 69, .2), transparent 62%), #14141c;
+    }
+    .contact::after {
+      content: "AA"; position: absolute; right: 24px; bottom: -28px;
+      font-family: Syne, sans-serif; font-weight: 800; font-size: 9rem; line-height: .8;
+      color: transparent; -webkit-text-stroke: 1px rgba(246, 243, 238, .08); pointer-events: none;
+    }
     .mail { font-family: Syne, sans-serif; font-size: clamp(28px, 4vw, 48px); line-height: 1.05; letter-spacing: -.04em; display: inline-block; margin-top: 10px; }
     .mail:hover { color: var(--sand); }
-    .list { display: grid; gap: 6px; margin-top: 16px; }
-    .list a { color: var(--sand); }
+    .list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .list a { color: var(--sand); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; }
+    .list a:hover { border-color: var(--coral); color: var(--ink); }
     footer {
       position: relative; z-index: 1; max-width: var(--max); margin: 48px auto 0;
       padding: 18px 28px 32px; border-top: 1px solid var(--line);
@@ -268,16 +313,19 @@
       .nav-links.open { display: flex; }
       .head, footer { flex-direction: column; align-items: flex-start; gap: 8px; }
       .hero { min-height: 0; padding-top: 36px; }
+      .contact { padding: 22px; }
+      .contact::after { font-size: 5rem; }
     }
     @media (prefers-reduced-motion: reduce) {
       .intro { display: none; }
       .reveal, .intro h1 span, .intro-frame, .portrait, .marquee-track { animation: none !important; opacity: 1; transform: none; }
       .media { clip-path: none; }
-      .glow { display: none; }
+      .glow, .grain { display: none; }
     }
   </style>
 </head>
 <body class="locked">
+  <div class="grain" aria-hidden="true"></div>
   <div class="glow" id="glow"></div>
   <div class="bar" id="bar"></div>
   <a class="skip" href="#work">Skip to work</a>
@@ -288,7 +336,10 @@
         <h1><span>Ashmi</span><span>Anees</span></h1>
       </div>
       <div class="intro-stage">
-        <div class="intro-frame"><img src="images/portrait.jpg" alt="Ashmi Anees"></div>
+        <div class="intro-frame">
+          <img src="images/portrait.jpg" alt="Ashmi Anees">
+          <span class="corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        </div>
       </div>
     </div>
   </div>
@@ -319,6 +370,7 @@
         <figure class="portrait" id="portrait">
           <img src="images/portrait.jpg" alt="Ashmi Anees">
           <span class="glare"></span>
+          <span class="corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
           <span class="pill">Available now</span>
         </figure>
       </div>
@@ -360,36 +412,36 @@
       </div>
       <div class="work">
         <a class="piece" href="https://www.alpinemena.com" target="_blank" rel="noopener">
-          <div class="media"><div class="ph">Alpine · Dubai</div><span class="glare"></span></div>
-          <div class="copy"><p class="num">01</p><h3>Alpine Infinity</h3><p>Editorial site for a Dubai trading house, with an enquiry path.</p><span class="go">Visit</span></div>
+          <div class="media"><div class="ph alpine"><span class="ph-kicker">Dubai</span><strong>Alpine</strong><em>Infinity</em></div><span class="glare"></span></div>
+          <div class="copy"><p class="num">01</p><h3>Alpine Infinity</h3><p>Editorial site for a Dubai trading house, with an enquiry path.</p><div class="tags"><span>Next.js</span><span>React</span></div><span class="go">Visit</span></div>
         </a>
         <a class="piece" href="https://www.luxoqatar.com/" target="_blank" rel="noopener">
           <div class="media"><img class="shot" src="images/luxo.png" alt="Luxo Qatar"><span class="glare"></span></div>
-          <div class="copy"><p class="num">02</p><h3>Luxo International</h3><p>Live app for a Qatar trading company. React, Flask, MySQL, and weekly reporting.</p><span class="go">Visit</span></div>
+          <div class="copy"><p class="num">02</p><h3>Luxo International</h3><p>Live app for a Qatar trading company. React, Flask, MySQL, and weekly reporting.</p><div class="tags"><span>React</span><span>Flask</span><span>MySQL</span></div><span class="go">Visit</span></div>
         </a>
         <a class="piece" href="https://github.com/ashmianees/DXC_Helpdesk_Analytics" target="_blank" rel="noopener">
           <div class="media"><img class="shot" src="images/DXC.png" alt="SLA dashboard"><span class="glare"></span></div>
-          <div class="copy"><p class="num">03</p><h3>Helpdesk & SLA</h3><p>29,000+ tickets. Compliance, response time, and the bottlenecks that repeat.</p><span class="go">GitHub</span></div>
+          <div class="copy"><p class="num">03</p><h3>Helpdesk & SLA</h3><p>29,000+ tickets. Compliance, response time, and the bottlenecks that repeat.</p><div class="tags"><span>Power BI</span><span>SQL</span></div><span class="go">GitHub</span></div>
         </a>
         <a class="piece" href="https://public.tableau.com/app/profile/ashmi.anees/viz/EU-NON/RetailSalesAnalysis20192024" target="_blank" rel="noopener">
-          <div class="media"><div class="ph">Tableau</div><span class="glare"></span></div>
-          <div class="copy"><p class="num">04</p><h3>Retail sales</h3><p>2019–2024. Products, regions, customer segments, and KPI scorecards.</p><span class="go">Open</span></div>
+          <div class="media"><div class="ph tableau"><span class="ph-kicker">2019 — 2024</span><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><strong>Retail</strong><em>Tableau</em></div><span class="glare"></span></div>
+          <div class="copy"><p class="num">04</p><h3>Retail sales</h3><p>2019–2024. Products, regions, customer segments, and KPI scorecards.</p><div class="tags"><span>Tableau</span><span>KPI</span></div><span class="go">Open</span></div>
         </a>
         <a class="piece" href="https://github.com/ashmianees/airline-operations-analytics" target="_blank" rel="noopener">
           <div class="media"><img class="shot" src="images/Airline.png" alt="Airline dashboard"><span class="glare"></span></div>
-          <div class="copy"><p class="num">05</p><h3>Airline operations</h3><p>Delays, cancellations, and route performance in Power BI.</p><span class="go">GitHub</span></div>
+          <div class="copy"><p class="num">05</p><h3>Airline operations</h3><p>Delays, cancellations, and route performance in Power BI.</p><div class="tags"><span>Power BI</span></div><span class="go">GitHub</span></div>
         </a>
         <a class="piece" href="https://github.com/ashmianees/Textiles-analysis-using-power-bi" target="_blank" rel="noopener">
-          <div class="media"><div class="ph">Power BI</div><span class="glare"></span></div>
-          <div class="copy"><p class="num">06</p><h3>Textiles KPI</h3><p>Multi-source business data in automated dashboards.</p><span class="go">GitHub</span></div>
+          <div class="media"><div class="ph power"><span class="ph-kicker">Multi-source</span><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><strong>Textiles</strong><em>Power BI</em></div><span class="glare"></span></div>
+          <div class="copy"><p class="num">06</p><h3>Textiles KPI</h3><p>Multi-source business data in automated dashboards.</p><div class="tags"><span>Power BI</span><span>KPI</span></div><span class="go">GitHub</span></div>
         </a>
         <a class="piece" href="https://github.com/ashmianees/Fishgrid-host" target="_blank" rel="noopener">
           <div class="media"><img class="shot" src="images/Fishgrid.png" alt="Fish-Grid"><span class="glare"></span></div>
-          <div class="copy"><p class="num">07</p><h3>Fish-Grid</h3><p>Aquaculture platform with roles and dashboards. Research at NCECA 2025.</p><span class="go">GitHub</span></div>
+          <div class="copy"><p class="num">07</p><h3>Fish-Grid</h3><p>Aquaculture platform with roles and dashboards. Research at NCECA 2025.</p><div class="tags"><span>Django</span><span>MariaDB</span></div><span class="go">GitHub</span></div>
         </a>
         <a class="piece" href="https://github.com/ashmianees/Vitacalls" target="_blank" rel="noopener">
           <div class="media"><img class="shot" src="images/vitacalls.png" alt="Vita Calls"><span class="glare"></span></div>
-          <div class="copy"><p class="num">08</p><h3>Vita Calls</h3><p>Diet and nutrition app with recommendations and booking.</p><span class="go">GitHub</span></div>
+          <div class="copy"><p class="num">08</p><h3>Vita Calls</h3><p>Diet and nutrition app with recommendations and booking.</p><div class="tags"><span>PHP</span><span>MySQL</span></div><span class="go">GitHub</span></div>
         </a>
       </div>
     </section>
