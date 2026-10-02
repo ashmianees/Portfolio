@@ -4,20 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Ashmi Anees — data analyst and full stack developer. SQL, Power BI, Tableau, React, Django, and Flask. Immediate joiner.">
-  <meta name="theme-color" content="#f3efe6">
+  <meta name="theme-color" content="#0c0c10">
   <title>Ashmi Anees</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Outfit:wght@340;460;560&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@340;460;560&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ivory: #f3efe6;
-      --card: #faf7f2;
-      --ink: #1c1915;
-      --muted: #6d675f;
-      --line: #e3d9cc;
-      --gold: #8d6840;
-      --forest: #1c3d34;
+      --ivory: #0c0c10;
+      --card: #17171f;
+      --ink: #f6f3ee;
+      --muted: #b4aea6;
+      --line: rgba(246,243,238,.14);
+      --gold: #ff7a59;
+      --forest: #ffd2c2;
       --max: 1140px;
     }
     * { box-sizing: border-box; }
@@ -34,9 +34,13 @@
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
     button { font: inherit; background: none; border: 0; color: inherit; cursor: pointer; }
-    h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500; letter-spacing: -0.03em; margin: 0; }
+    h1, h2, h3, .brand, .idx, .marquee-track { font-family: Syne, sans-serif; font-weight: 700; letter-spacing: -0.04em; margin: 0; }
+    body { background:
+      radial-gradient(700px 420px at 85% 10%, rgba(255,122,89,.22), transparent 60%),
+      radial-gradient(600px 380px at 0% 30%, rgba(255,210,194,.08), transparent 55%),
+      var(--ivory); }
     p { margin: 0; }
-    .skip { position: absolute; left: 12px; top: -40px; background: var(--forest); color: #fff; padding: 8px 12px; z-index: 80; }
+    .skip { position: absolute; left: 12px; top: -40px; background: #ff7a59; color: #1a100c; padding: 8px 12px; z-index: 80; }
     .skip:focus { top: 12px; }
     .bar {
       position: fixed; top: 0; left: 0; height: 2px; width: 100%; background: var(--gold);
@@ -53,8 +57,10 @@
     .intro h1 { font-size: clamp(56px, 8vw, 96px); line-height: .9; font-weight: 500; margin-top: 10px; }
     .intro h1 span { display: inline-block; opacity: 0; transform: translateY(24px); animation: rise 1s .2s cubic-bezier(.16,1,.3,1) forwards; }
     .intro h1 span + span { font-style: italic; color: var(--forest); animation-delay: .35s; margin-left: .12em; }
-    .intro-frame { overflow: hidden; border-radius: 18px; background: #ece6dc; }
-    .intro-frame img { width: 100%; height: min(68vh, 560px); object-fit: cover; object-position: center 18%; transform: scale(1.08); animation: settle 1.4s .15s cubic-bezier(.16,1,.3,1) forwards; }
+    .intro-card { transform-style: preserve-3d; perspective: 1200px; }
+    .intro-frame { overflow: hidden; border-radius: 22px; background: #1a1a22; transform: rotateY(-18deg) rotateX(8deg); box-shadow: 30px 40px 0 rgba(255,122,89,.18); animation: tiltin 1.3s cubic-bezier(.16,1,.3,1) forwards; }
+    .intro-frame img { width: 100%; height: min(68vh, 560px); object-fit: cover; object-position: center 18%; }
+    @keyframes tiltin { to { transform: rotateY(-8deg) rotateX(2deg); } }
     @keyframes settle { to { transform: scale(1); } }
     @keyframes rise { to { opacity: 1; transform: none; } }
 
@@ -87,10 +93,11 @@
     .btn.solid { background: var(--ink); color: var(--ivory); }
     .btn:hover { background: var(--forest); color: #fff; border-color: var(--forest); transform: translateY(-2px); }
     .portrait { position: relative; }
+    .stage { perspective: 1200px; justify-self: end; }
+    .portrait { transform-style: preserve-3d; transition: transform .12s linear; border-radius: 22px; box-shadow: 24px 28px 0 rgba(255,122,89,.2); }
     .portrait img {
-      width: min(100%, 420px); margin-left: auto; aspect-ratio: 4/5; object-fit: cover; object-position: center 18%;
-      border-radius: 18px;
-      animation: drift 7s ease-in-out infinite;
+      width: min(100%, 420px); aspect-ratio: 4/5; object-fit: cover; object-position: center 18%;
+      border-radius: 22px; display: block;
     }
     .portrait figcaption { margin-top: 14px; text-align: right; color: var(--muted); font-size: .9rem; }
     @keyframes drift { 50% { transform: translateY(-8px); } }
@@ -109,8 +116,8 @@
     .lane:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(28,25,21,.06); }
     .lane h3 { font-size: 2.4rem; margin: 10px 0; }
     .lane p, .piece p, .job p, .panel p { color: var(--muted); }
-    .lane.dark { background: var(--forest); color: #f6f1e8; border-color: var(--forest); }
-    .lane.dark p { color: #d5e4dc; }
+    .lane.dark { background: #ff7a59; color: #1a100c; border-color: #ff7a59; }
+    .lane.dark p, .lane.dark .eyebrow { color: #3a2018 !important; }
 
     .work { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .piece {
@@ -118,7 +125,8 @@
       border-radius: 24px; border: 1px solid var(--line); background: var(--card);
       transition: transform .55s cubic-bezier(.16,1,.3,1), box-shadow .55s;
     }
-    .piece:hover { transform: translateY(-12px); box-shadow: 0 28px 50px rgba(28,25,21,.1); }
+    .piece { transform-style: preserve-3d; }
+    .piece:hover { box-shadow: 18px 22px 0 rgba(255,122,89,.16); }
     .media { position: relative; height: 220px; overflow: hidden; background: #e7dfd2; }
     .idx { position: absolute; left: 14px; top: 14px; z-index: 1; background: rgba(243,239,230,.92); border-radius: 999px; padding: 4px 10px; font-family: "Cormorant Garamond", serif; color: var(--gold); }
     .piece h3 { font-size: 1.8rem; margin-bottom: 6px; }
@@ -216,10 +224,12 @@
           <a class="btn" href="#contact">Contact</a>
         </div>
       </div>
-      <figure class="portrait">
+      <div class="stage" id="stage">
+      <figure class="portrait" id="portrait">
         <img src="images/portrait.jpg" alt="Ashmi Anees">
         <figcaption>Available now</figcaption>
       </figure>
+      </div>
     </section>
     <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
@@ -372,6 +382,19 @@
       menu.setAttribute("aria-expanded", String(open));
     });
     links.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => links.classList.remove("open")));
+    const tilt = (el, strength) => {
+      if (reduce) return;
+      el.addEventListener("pointermove", (e) => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transform = `rotateY(${x * strength}deg) rotateX(${y * -strength * 0.6}deg)`;
+      });
+      el.addEventListener("pointerleave", () => { el.style.transform = ""; });
+    };
+    const portrait = document.getElementById("portrait");
+    if (portrait) tilt(portrait, 18);
+    document.querySelectorAll(".piece, .lane").forEach((el) => tilt(el, 8));
     document.querySelectorAll(".work .piece").forEach((el, i) => el.classList.add(i % 2 ? "from-right" : "from-left", "reveal"));
     document.querySelectorAll(".job").forEach((el, i) => el.classList.add(i % 2 ? "from-right" : "from-left"));
     document.querySelectorAll(".panel").forEach((el, i) => el.classList.add(i % 2 ? "from-right" : "from-left"));
